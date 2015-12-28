@@ -1,5 +1,6 @@
 var main = function() {
-	console.log('hello world');
+	var prob1 = multiplesOf([3,5],1000);
+	console.log("prob1: " + prob1);
 };
 // end of main function
 

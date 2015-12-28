@@ -1,0 +1,34 @@
+body {
+	background-color: #fafafa;
+	color: #333;
+	font-family: 'Lato', Sans-serif;
+}
+
+::selection {
+	background-color: #263e59;
+	color: #dfffff;
+}
+
+h1 {
+	font-size: 3rem;
+	text-align: left;
+}
+
+h2 {
+	font-size: 2rem;
+	text-align: left;
+	font-weight: 300;
+}
+
+h3 {
+	font-size: 1.5rem;
+	text-align: left;
+}
+
+a, a:visited {
+	color: #2699ee;
+}
+
+a:hover {
+	color: #ee9933;
+}

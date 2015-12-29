@@ -32,3 +32,29 @@ var multiplesOf = function(nums, max){
 	
 	return sum;
 };
+
+// problem 2
+
+//Fibonacci number
+var fib=function(max){
+	var p1=0, p2, f=1;
+	while(f<max){
+		console.log(f);
+		p2=p1;
+		p1=f;
+		f=p1+p2;
+	}
+};
+
+var evenFib=function(max){
+	var p1=0, p2, f=1, sum = 0;
+	while(f<max){
+		if(f%2===0){
+			sum+=f;
+		}
+		p2=p1;
+		p1=f;
+		f=p1+p2;
+	}
+	return sum;
+};

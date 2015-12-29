@@ -12,16 +12,17 @@ body {
   color: #dfffff; }
 
 h1 {
-  font-size: 3rem;
+  font-size: 2rem;
   text-align: left; }
 
 h2 {
-  font-size: 2rem;
+  font-size: 1.5rem;
   text-align: left;
   font-weight: 300; }
 
 h3 {
-  font-size: 1.5rem;
+  font-size: 1.3rem;
+  font-weight: 300;
   text-align: left; }
 
 a, a:visited {

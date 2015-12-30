@@ -12,7 +12,10 @@ var uniqueList = function(list){
 };
 
 
+//////////////
 // problem 1
+//////////////
+
 var multiplesOf = function(nums, max){
 	var sum = 0;
 	var multiples = [];
@@ -33,7 +36,9 @@ var multiplesOf = function(nums, max){
 	return sum;
 };
 
+//////////////
 // problem 2
+//////////////
 
 //Fibonacci number
 var fib=function(max){
@@ -59,7 +64,9 @@ var evenFib=function(max){
 	return sum;
 };
 
+//////////////
 // problem 3 
+//////////////
 
 //checks if a number is a prime number
 var isItPrime = function(n){
@@ -122,4 +129,30 @@ var primeFactors= function(num){
 		}while(remainer!=1 && !oORange);
 		return factorsList;
 	}	
+};
+
+
+//////////////
+// problem 4 
+//////////////
+
+var isItPalindrome = function(num){
+	var arr = [];
+	if(num<0){
+		return false;
+	}
+	//getting each digit into an array
+	//comes out reversed, doesn't really matter
+	//for calculation  
+	do{
+		arr.push(num%10);
+		num=Math.floor(num/10);
+	}while(num > 0);
+	isIt = true;
+	for(var i=0, halfL=arr.length/2, lasti = arr.length-1;i<halfL;i++){
+		if(arr[i] !== arr[lasti-i]){
+			isIt = false;
+		};
+	}
+	return isIt;
 };

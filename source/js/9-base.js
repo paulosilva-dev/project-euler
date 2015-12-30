@@ -14,13 +14,18 @@ var main = function() {
 		$('.2').text(prob2);
 	});
 	
-	// problem3
+	// problem 3
 	$('.btn-3').click(function(){
 		var prob3 = primeFactors(600851475143);
 		console.log("prob3: "+ prob3[prob3.length-1]);
 		console.log("factors: "+ prob3);
 		$('.3').text(prob3[prob3.length-1]);
 	});
+	
+	// problem 4
+	// wip
+	var num = 1005445001;
+	console.log("num: "+num+" : "+isItPalindrome(num));
 };
 // end of main function
 

@@ -49,6 +49,7 @@ h3 {
   text-align: left; }
 
 a, a:visited {
+  font-size: 1em;
   color: #2699ee; }
 
 a:hover {
@@ -63,6 +64,10 @@ main {
   display: block;
   max-width: 600px;
   margin: 20px auto; }
+
+button {
+  padding: 0 4px;
+  margin: 0 10px; }
 
 .warning {
   background-color: #c4daff;

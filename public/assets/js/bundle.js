@@ -156,6 +156,26 @@ var isItPalindrome = function(num){
 	}
 	return isIt;
 };
+
+var maxPali = function(num){
+	if(num>0){
+		var a = num, b = num*num;
+		var bottomRange = Math.ceil(num/10);
+		//starting from max number (num*num), counting down
+		for(;b>num*bottomRange;b--){
+			if(isItPalindrome(b)){
+				for(var i = a;i>a-bottomRange;i--){
+					//checking if factors are in range
+					if(b%i===0 && b/i<num+1){
+						console.log("Found: "+b+" = " + i +"*"+ b/i);
+						return b;						
+					}
+				}
+			}
+		}
+		return 0;
+	}
+};
 var main = function() {
 	
 	// problem 1
@@ -180,10 +200,13 @@ var main = function() {
 		$('.3').text(prob3[prob3.length-1]);
 	});
 	
-	// problem 4
-	// wip
-	var num = 1005445001;
-	console.log("num: "+num+" : "+isItPalindrome(num));
+	// problem 4	
+	$('.btn-4').click(function(){
+		var prob4 = maxPali(999);
+		console.log("prob4: " + prob4);
+		$('.4').text(prob4);
+	});
+	
 };
 // end of main function
 

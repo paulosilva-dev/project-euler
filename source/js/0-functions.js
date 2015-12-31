@@ -156,3 +156,23 @@ var isItPalindrome = function(num){
 	}
 	return isIt;
 };
+
+var maxPali = function(num){
+	if(num>0){
+		var a = num, b = num*num;
+		var bottomRange = Math.ceil(num/10);
+		//starting from max number (num*num), counting down
+		for(;b>num*bottomRange;b--){
+			if(isItPalindrome(b)){
+				for(var i = a;i>a-bottomRange;i--){
+					//checking if factors are in range
+					if(b%i===0 && b/i<num+1){
+						console.log("Found: "+b+" = " + i +"*"+ b/i);
+						return b;						
+					}
+				}
+			}
+		}
+		return 0;
+	}
+};

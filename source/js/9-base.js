@@ -32,7 +32,17 @@ var main = function() {
 	// alternative solution to prob 4
 	// var prob4b = maxPalib(999);
 	// console.log("prob4b: " + prob4b);
-		
+	// problem 5
+	$('.btn-5').click(function(){
+		var prob5 = evenMultiple(20);
+		console.log("prob5: " + prob5);
+		$('.5').text(prob5);
+	});
+	
+	// used to check algorithm performance
+	// var s = new Date();
+	// var e = new Date();
+	// console.log("> solved in: "+(e-s)+"ms");
 };
 // end of main function
 

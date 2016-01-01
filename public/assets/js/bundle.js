@@ -199,6 +199,47 @@ var maxPalib = function(max){
 	}
 	return maxPaliNum;
 };
+
+//////////////
+// problem 5
+//////////////
+
+var factorial = function(num){
+	if(num <2){
+		return 1;
+	}
+	var result =num;
+	for(var i = num-1;i>1;i--){
+		result = result * i;
+	}
+	return result;
+}
+
+var isItEvenDiv = function(num, maxDiv){
+	var isIt = true;
+	var min = 1;
+	if(maxDiv > 6){
+		min = 5;
+	}
+	for(var i = maxDiv; i > min && isIt;i--){
+		if(num%i!==0){
+			isIt = false;
+		}
+	}
+	return isIt;
+}
+
+var evenMultiple = function(num){
+	var max = factorial(num);
+	// since it needs to be a multiple of num
+	// lets start at num and increment by num
+	for(var i = num;i<max;i+=num){
+		if(isItEvenDiv(i, num)){
+			return i;
+		}
+	}
+	return 0;
+}
 var main = function() {
 	
 	// problem 1
@@ -233,7 +274,17 @@ var main = function() {
 	// alternative solution to prob 4
 	// var prob4b = maxPalib(999);
 	// console.log("prob4b: " + prob4b);
-		
+	// problem 5
+	$('.btn-5').click(function(){
+		var prob5 = evenMultiple(20);
+		console.log("prob5: " + prob5);
+		$('.5').text(prob5);
+	});
+	
+	// used to check algorithm performance
+	// var s = new Date();
+	// var e = new Date();
+	// console.log("> solved in: "+(e-s)+"ms");
 };
 // end of main function
 

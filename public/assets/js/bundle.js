@@ -157,6 +157,7 @@ var isItPalindrome = function(num){
 	return isIt;
 };
 
+// my original solution
 var maxPali = function(num){
 	if(num>0){
 		var a = num, b = num*num;
@@ -164,7 +165,7 @@ var maxPali = function(num){
 		//starting from max number (num*num), counting down
 		for(;b>num*bottomRange;b--){
 			if(isItPalindrome(b)){
-				for(var i = a;i>a-bottomRange;i--){
+				for(var i = a, min=Math.floor(Math.sqrt(b));i>min;i--){
 					//checking if factors are in range
 					if(b%i===0 && b/i<num+1){
 						console.log("Found: "+b+" = " + i +"*"+ b/i);
@@ -173,8 +174,29 @@ var maxPali = function(num){
 				}
 			}
 		}
-		return 0;
 	}
+	return 0;
+};
+
+// alternative version to solve the problem 4
+// brute force, can be optimized for less iterations.
+var maxPalib = function(max){
+	if(max>0){
+		var min = Math.ceil(max/10);
+		var factors=[];
+		var maxPaliNum=0;
+		for(var a = max; a > min;a--){
+			for(var b = max, mult = 0; b>min;b--){
+				mult = a*b;
+				if(isItPalindrome(mult)&&mult>maxPaliNum){
+					maxPaliNum = mult;
+					factors=[a,b];
+				}				
+			}
+		}
+		console.log("Found: "+maxPaliNum+" = " + factors[0] +"*"+ factors[1]);
+	}
+	return maxPaliNum;
 };
 var main = function() {
 	
@@ -207,6 +229,10 @@ var main = function() {
 		$('.4').text(prob4);
 	});
 	
+	// alternative solution to prob 4
+	// var prob4b = maxPalib(999);
+	// console.log("prob4b: " + prob4b);
+		
 };
 // end of main function
 

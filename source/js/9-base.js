@@ -29,6 +29,10 @@ var main = function() {
 		$('.4').text(prob4);
 	});
 	
+	// alternative solution to prob 4
+	// var prob4b = maxPalib(999);
+	// console.log("prob4b: " + prob4b);
+		
 };
 // end of main function
 

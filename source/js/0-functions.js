@@ -179,22 +179,23 @@ var maxPali = function(num){
 };
 
 // alternative version to solve the problem 4
-// brute force, can be optimized for less iterations.
 var maxPalib = function(max){
 	if(max>0){
 		var min = Math.ceil(max/10);
 		var factors=[];
 		var maxPaliNum=0;
-		for(var a = max; a > min;a--){
-			for(var b = max, mult = 0; b>min;b--){
+		var it = 0;
+		for(var a = max; a*max > maxPaliNum;a--){
+			for(var b = a, mult = 0; b*a > maxPaliNum;b--){
 				mult = a*b;
+				it++;
 				if(isItPalindrome(mult)&&mult>maxPaliNum){
 					maxPaliNum = mult;
 					factors=[a,b];
 				}				
 			}
 		}
-		console.log("Found: "+maxPaliNum+" = " + factors[0] +"*"+ factors[1]);
+		console.log("Found: "+maxPaliNum+" = " + factors[0] +"*"+ factors[1]+" iterations "+it);
 	}
 	return maxPaliNum;
 };

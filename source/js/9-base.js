@@ -39,6 +39,14 @@ var main = function() {
 		$('.5').text(prob5);
 	});
 	
+  
+  
+	$('.btn-6').click(function(){
+    var prob6 = sumSqrDiff(100);
+    console.log("prob6: " + prob6);
+		$('.6').text(prob6);
+	});
+  
 	// used to check algorithm performance
 	// var s = new Date();
 	// var e = new Date();

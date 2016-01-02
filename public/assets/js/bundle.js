@@ -240,6 +240,33 @@ var evenMultiple = function(num){
 	}
 	return 0;
 }
+
+//////////////
+// Problem 6
+//////////////
+
+// sum function
+// recusive solution
+var sum = function(num){
+  if(num>0){
+    return num+sum(num-1);
+  }
+  return 0;
+}
+
+// sum of squares function
+// recusive solution
+var sqrSum= function(num){
+  if(num>1){
+    return num*num+sqrSum(num-1);
+  }
+  return 1;
+}
+
+var sumSqrDiff = function(num){
+  var s = sum(num); 
+  return s*s-sqrSum(num);
+}
 var main = function() {
 	
 	// problem 1
@@ -281,6 +308,14 @@ var main = function() {
 		$('.5').text(prob5);
 	});
 	
+  
+  
+	$('.btn-6').click(function(){
+    var prob6 = sumSqrDiff(100);
+    console.log("prob6: " + prob6);
+		$('.6').text(prob6);
+	});
+  
 	// used to check algorithm performance
 	// var s = new Date();
 	// var e = new Date();

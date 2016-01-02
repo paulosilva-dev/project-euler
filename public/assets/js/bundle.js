@@ -254,6 +254,12 @@ var sum = function(num){
   return 0;
 }
 
+// sum function
+// optimized solution
+var sumB = function(num){
+  return (num*(num+1))/2;
+}
+
 // sum of squares function
 // recusive solution
 var sqrSum= function(num){
@@ -263,9 +269,15 @@ var sqrSum= function(num){
   return 1;
 }
 
+// sum of squares function
+// optimized solution
+var sqrSumB= function(num){
+  return ((2*num+1)*(num+1)*num)/6;
+}
+
 var sumSqrDiff = function(num){
-  var s = sum(num); 
-  return s*s-sqrSum(num);
+  var s = sumB(num); 
+  return s*s-sqrSumB(num);
 }
 var main = function() {
 	

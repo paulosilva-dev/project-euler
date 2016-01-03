@@ -279,3 +279,24 @@ var sumSqrDiff = function(num){
   var s = sumB(num); 
   return s*s-sqrSumB(num);
 }
+
+
+//////////////
+// Problem 7
+//////////////
+
+var nPrime = function(num){
+  if(num === 1){
+    return 2;
+  }
+  var ord = 1;
+  var prime = 0;
+  // all primes after 2 will be odd
+  for(var i = 3; ord !==num;i+=2){
+    if(isItPrime(i)){
+      ord++;
+      prime = i;
+    }    
+  }
+  return prime;
+};

@@ -38,13 +38,19 @@ var main = function() {
 		console.log("prob5: " + prob5);
 		$('.5').text(prob5);
 	});
-	
-  
-  
+	  
+	// problem 6
 	$('.btn-6').click(function(){
     var prob6 = sumSqrDiff(100);
     console.log("prob6: " + prob6);
 		$('.6').text(prob6);
+	});
+  
+	// problem 7
+	$('.btn-7').click(function(){
+    var prob7 = nPrime(10001);
+    console.log("prob7: " + prob7);
+		$('.7').text(prob7);
 	});
   
 	// used to check algorithm performance

@@ -279,6 +279,27 @@ var sumSqrDiff = function(num){
   var s = sumB(num); 
   return s*s-sqrSumB(num);
 }
+
+
+//////////////
+// Problem 7
+//////////////
+
+var nPrime = function(num){
+  if(num === 1){
+    return 2;
+  }
+  var ord = 1;
+  var prime = 0;
+  // all primes after 2 will be odd
+  for(var i = 3; ord !==num;i+=2){
+    if(isItPrime(i)){
+      ord++;
+      prime = i;
+    }    
+  }
+  return prime;
+};
 var main = function() {
 	
 	// problem 1
@@ -319,13 +340,19 @@ var main = function() {
 		console.log("prob5: " + prob5);
 		$('.5').text(prob5);
 	});
-	
-  
-  
+	  
+	// problem 6
 	$('.btn-6').click(function(){
     var prob6 = sumSqrDiff(100);
     console.log("prob6: " + prob6);
 		$('.6').text(prob6);
+	});
+  
+	// problem 7
+	$('.btn-7').click(function(){
+    var prob7 = nPrime(10001);
+    console.log("prob7: " + prob7);
+		$('.7').text(prob7);
 	});
   
 	// used to check algorithm performance

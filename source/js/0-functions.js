@@ -123,7 +123,7 @@ var primeFactors= function(num){
 				}
 				if(i>=l){
 					oORange = true;
-					console.log("Out of range");		
+					console.log('Out of range');		
 				}
 				i++;
 		}while(remainer!=1 && !oORange);
@@ -168,7 +168,7 @@ var maxPali = function(num){
 				for(var i = a, min=Math.floor(Math.sqrt(b));i>min;i--){
 					//checking if factors are in range
 					if(b%i===0 && b/i<num+1){
-						console.log("Found: "+b+" = " + i +"*"+ b/i);
+						console.log('Found: '+b+' = ' + i +'*'+ b/i);
 						return b;						
 					}
 				}
@@ -195,7 +195,7 @@ var maxPalib = function(max){
 				}				
 			}
 		}
-		console.log("Found: "+maxPaliNum+" = " + factors[0] +"*"+ factors[1]+" iterations "+it);
+		console.log('Found: '+maxPaliNum+' = ' + factors[0] +'*'+ factors[1]+' iterations '+it);
 	}
 	return maxPaliNum;
 };
@@ -300,3 +300,50 @@ var nPrime = function(num){
   }
   return prime;
 };
+
+
+//////////////
+// Problem 8
+//////////////
+
+// returns the product of the numbers of the giving array
+var prod = function(arrayN){
+  var r = 1;
+  for(var i=0, l = arrayN.length; i<l; i++){
+    if(arrayN[i]===0){
+      return 0;      
+    }
+    r *= arrayN[i];
+  }
+  return r;
+}
+
+
+var prob8Func = function(bigN, nDigits){
+  // converting from string to number array
+  var seriesArray = bigN.split('');
+  for(var i = 0, l=seriesArray.length; i<l;i++){
+    seriesArray[i]=parseInt(seriesArray[i]);
+  }
+  
+  // finding the highest product
+  var candidates = [];
+  var biggerProd = 0;
+  for(var i= 0,l = seriesArray.length-nDigits;i<l;i++){
+    var digits = [];
+    
+    for(j=0;j<nDigits;j++){
+      digits.push(seriesArray[i+j]);
+    }
+    
+    var prodDigits = prod(digits);
+    
+    if(biggerProd<prodDigits){
+      biggerProd = prodDigits;
+      candidates = digits;
+    }
+    
+  }
+  console.log('product: '+ biggerProd + ' digits: ' + candidates);
+  return biggerProd;
+}

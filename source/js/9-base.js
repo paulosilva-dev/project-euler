@@ -81,6 +81,13 @@ var main = function() {
 		$('.8').text(prob8);
 	});
   
+  // problem 9
+	$('.btn-9').click(function(){
+    var prob9 = prob9Func();
+    console.log('prob9: '+ prob9);
+    $('.9').text(prob9);
+	});
+  
 	// used to check algorithm performance
 	// var s = new Date();
 	// var e = new Date();

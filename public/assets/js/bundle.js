@@ -332,7 +332,7 @@ var prob8Func = function(bigN, nDigits){
   for(var i= 0,l = seriesArray.length-nDigits;i<l;i++){
     var digits = [];
     
-    for(j=0;j<nDigits;j++){
+    for(var j=0;j<nDigits;j++){
       digits.push(seriesArray[i+j]);
     }
     
@@ -347,6 +347,34 @@ var prob8Func = function(bigN, nDigits){
   console.log('product: '+ biggerProd + ' digits: ' + candidates);
   return biggerProd;
 }
+
+//////////////
+// Problem 9
+//////////////
+
+var getP9Candidates = function(){
+  var cand = [];
+  for(var c=1000; c>1; c--){
+    for(var b=1000-c; b>0; b--){
+      var a = 1000-c-b;
+      if(c>b && b>a && a>0){
+        if(a*a+b*b===c*c){
+          // because we know there is only 1
+          // it will return the first one found if
+          // limit was diferent
+          return cand.push=[a,b,c];
+        }
+      }
+    }    
+  }
+  return cand;
+};
+
+var prob9Func = function(){
+  var candidates = getP9Candidates();
+  console.log(candidates);
+  return candidates[0]*candidates[1]*candidates[2];  
+};
 var main = function() {
 	
 	// problem 1
@@ -428,6 +456,13 @@ var main = function() {
     var prob8 = prob8Func(numSeries, 13);
     console.log('prob8: '+ prob8);
 		$('.8').text(prob8);
+	});
+  
+  // problem 9
+	$('.btn-9').click(function(){
+    var prob9 = prob9Func();
+    console.log('prob9: '+ prob9);
+    $('.9').text(prob9);
 	});
   
 	// used to check algorithm performance

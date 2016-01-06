@@ -1,3 +1,21 @@
+//simple test function :
+var test = function(fun,arg,expec){
+  var passed = false;
+  var result;
+	var s = new Date();
+  result = fun(arg);
+  passed = result===expec;
+	var e = new Date();
+  if(passed){
+    console.log('########## Passed! ##########');
+  }
+  else{
+    console.log('########## FAILED! ##########');
+  }
+  console.log('# expected: '+expec+'   got: '+ result);
+	console.log('# computed in: '+(e-s)+'ms');
+}
+
 //returns a version of the given list without duplicates
 var uniqueList = function(list){
 	var h = {};
@@ -375,3 +393,21 @@ var prob9Func = function(){
   console.log(candidates);
   return candidates[0]*candidates[1]*candidates[2];  
 };
+
+//////////////
+// Problem 10
+//////////////
+
+var sumArray = function(a){
+  r = 0;
+  for(var i=0, l=a.length;i<l;i++){
+    r+=a[i];
+  }
+  return r;
+}
+
+var prob10Func = function(max){
+    //using primes function made for prob3
+    var primeList = primes(max);
+    return sumArray(primeList);
+}

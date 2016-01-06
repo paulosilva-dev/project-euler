@@ -88,10 +88,21 @@ var main = function() {
     $('.9').text(prob9);
 	});
   
-	// used to check algorithm performance
-	// var s = new Date();
-	// var e = new Date();
-	// console.log('> solved in: '+(e-s)+'ms');
+  // problem 10
+  
+  // base test
+  // test(prob10Func, 10, 17);
+  
+	$('.btn-10').click(function(){  
+    var prob10 = prob10Func(2000000);
+    console.log(prob10);
+    $('.10').text(prob10);
+	});
+  
+  
+	// used to test result and check algorithm performance
+  // test = function(fun,arg,expec)
+  
 };
 // end of main function
 

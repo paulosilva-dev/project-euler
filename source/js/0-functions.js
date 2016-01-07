@@ -1,21 +1,3 @@
-//simple test function :
-var test = function(fun,arg,expec){
-  var passed = false;
-  var result;
-	var s = new Date();
-  result = fun(arg);
-  passed = result===expec;
-	var e = new Date();
-  if(passed){
-    console.log('########## Passed! ##########');
-  }
-  else{
-    console.log('########## FAILED! ##########');
-  }
-  console.log('# expected: '+expec+'   got: '+ result);
-	console.log('# computed in: '+(e-s)+'ms');
-}
-
 //returns a version of the given list without duplicates
 var uniqueList = function(list){
 	var h = {};
@@ -410,4 +392,23 @@ var prob10Func = function(max){
     //using primes function made for prob3
     var primeList = primes(max);
     return sumArray(primeList);
+}
+
+//////////////
+// Problem 11
+//////////////
+
+var prob11Func = function(oGrid){
+  var numGrid = [];
+  for(var i = 0, l=oGrid.length;i<l;i++){
+    numGrid.push(oGrid[0].split(' '));
+  }
+  for(var i = 0, l=numGrid.length;i<l;i++){
+    for(var j = 0, l=numGrid[i].length;j<l;j++){
+      numGrid[i][j] = parseInt( numGrid[i][j] );
+    }
+  }
+  
+  console.log(numGrid);
+  return 0;
 }

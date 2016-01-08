@@ -23,4 +23,3 @@ var test = function(fun,arg,expec){
 
 // problem 10
 // test(prob10Func, 10, 17);
-  

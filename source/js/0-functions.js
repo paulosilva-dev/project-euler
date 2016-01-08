@@ -401,14 +401,90 @@ var prob10Func = function(max){
 var prob11Func = function(oGrid){
   var numGrid = [];
   for(var i = 0, l=oGrid.length;i<l;i++){
-    numGrid.push(oGrid[0].split(' '));
+    numGrid.push(oGrid[i].split(' '));
   }
-  for(var i = 0, l=numGrid.length;i<l;i++){
+  for(var i = 0, h=numGrid.length;i<h;i++){
     for(var j = 0, l=numGrid[i].length;j<l;j++){
       numGrid[i][j] = parseInt( numGrid[i][j] );
     }
   }
   
-  console.log(numGrid);
-  return 0;
+  // max Multiplication array
+  // result on index 0, factors array in index 1
+  var multMult = [];
+  multMult.push(0);
+  multMult.push([0]);
+  var multDiag = 1;
+  var multHor = 1;
+  var multVer = 1;
+  for(var y=0, h=numGrid.length;y<h;y++){
+    for(var x=0, l=numGrid[y].length;x<l;x++){
+      
+      
+      // check if at vertical limit:
+      if( y+4<h ){
+        
+        //vertical mult:
+        multVer = 1;
+          for(var i = 0;i<4;i++){
+            multVer *= numGrid[y+i][x];
+          }
+          
+          if(multVer > multMult[0]){
+            multMult[0]=multDiag;
+            multMult[1]=[];
+            for(var i = 0;i<4;i++){
+              multMult[1].push(numGrid[y+i][x]);
+            }
+          }
+        
+        
+        // check if at horizontal limit:
+        if( x+4<l ){
+          
+          multDiag = 1;
+          multHor = 1;
+          for(var i = 0;i<4;i++){
+            multDiag *= numGrid[y+i][x+i];
+            multHor *= numGrid[y][x+i];
+          }
+          
+          if(multDiag > multMult[0]){
+            multMult[0]=multDiag;
+            multMult[1]=[];
+            for(var i = 0;i<4;i++){
+              multMult[1].push(numGrid[y+i][x+i]);
+            }
+          }
+          
+          if(multHor > multMult[0]){
+            multMult[0]=multHor;
+            multMult[1]=[];
+            for(var i = 0;i<4;i++){
+              multMult[1].push(numGrid[y][x+i]);
+            }
+          }          
+          
+        }
+        if( x-4>0 ){
+          
+          multDiag = 1;
+          for(var i = 0;i<4;i++){
+            multDiag *= numGrid[y+i][x-i];
+          }
+          if(multDiag > multMult[0]){
+            multMult[0]=multDiag;
+            multMult[1]=[];
+            for(var i = 0;i<4;i++){
+              multMult[1].push(numGrid[y+i][x-i]);
+            }
+          }
+            
+        }
+      }
+    }
+  }
+  console.log(multMult);
+  
+  return multMult[0];
 }

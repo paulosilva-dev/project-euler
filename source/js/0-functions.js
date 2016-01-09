@@ -555,8 +555,6 @@ var prob12Func = function(minDivisors){
       nat += i;
       divNum = divisorsNum(nat);
     }while(divNum < minDivisors);
-    var d = divisors(nat);
-    console.log('num '+nat+' i '+ i +' div: '+ divNum + ' divisors: ' + d);
   }
   return nat;
 }

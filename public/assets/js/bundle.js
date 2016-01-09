@@ -488,6 +488,78 @@ var prob11Func = function(oGrid){
   
   return multMult[0];
 }
+
+
+
+//////////////
+// Problem 12 
+//////////////
+
+var triangleNum = function(n){
+  var r = 0;
+  for(var i = 1; i<= n;i++){
+    r+=i;
+  }
+  return r;
+}
+
+var divisorsNum = function(n){
+  var r = 1;
+  var half = Math.floor(n/2)
+  var decrement = 2;
+  if(n%2 ===0){
+    decrement = 1;
+  } else if (half%2===0){
+    half -=1;
+  }
+  for(var i = half;i>0;i-=decrement){
+    if(n%i===0){
+      r+=1;
+    }
+  }  
+  return r;
+}
+
+
+var divisors = function(n){
+  var r = [n];
+  var half = Math.floor(n/2)
+  var decrement = 2;
+  if(n%2 ===0){
+    decrement = 1;
+  } else if (half%2===0){
+    half -=1;
+  }
+  for(var i = half;i>0;i-=decrement){
+    if(n%i===0){
+      r.push(i);
+    }
+  }  
+  return r;
+}
+
+var isDiv = function(d, n){
+  for(var i = d; i > 0; i--){
+    if(n%d!==0){
+      return false;
+    }    
+  }
+  return true;
+}
+
+var prob12Func = function(minDivisors){
+  var nat=0, divNum=0, i=0;
+  if(minDivisors >0){
+    do{
+      i+=1;
+      nat += i;
+      divNum = divisorsNum(nat);
+    }while(divNum < minDivisors);
+    var d = divisors(nat);
+    console.log('num '+nat+' i '+ i +' div: '+ divNum + ' divisors: ' + d);
+  }
+  return nat;
+}
 //simple test function :
 // used to test result and check algorithm performance
 var test = function(fun,arg,expec){
@@ -503,6 +575,7 @@ var test = function(fun,arg,expec){
   else{
     console.log('########## FAILED! ##########');
   }
+  console.log('# for input: '+arg);
   console.log('# expected: '+expec+'   got: '+ result);
 	console.log('# computed in: '+(e-s)+'ms');
 }
@@ -513,6 +586,20 @@ var test = function(fun,arg,expec){
 
 // problem 10
 // test(prob10Func, 10, 17);
+
+// problem 11
+// test(triangleNum, 1, 1);
+// test(triangleNum, 2, 3);
+// test(triangleNum, 5, 15);
+
+// test(divisorsNum, 1, 1);
+// test(divisorsNum, 3, 2);
+// test(divisorsNum, 10, 4);
+// test(divisorsNum, 15, 4);
+// test(divisorsNum, 28, 6);
+
+// test(prob12Func, 4, 6);
+// test(prob12Func, 6, 28);
 var main = function() {
 	
 	// problem 1
@@ -638,6 +725,11 @@ var main = function() {
     $('.11').text(prob11);
 	});
   
+  // problem 12
+  // 8 mins computation
+  // brute force solution
+  // var prob12 = prob12Func(501);
+  // console.log(prob12);
 
 };
 // end of main function

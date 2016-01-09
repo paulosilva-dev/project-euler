@@ -488,3 +488,75 @@ var prob11Func = function(oGrid){
   
   return multMult[0];
 }
+
+
+
+//////////////
+// Problem 12 
+//////////////
+
+var triangleNum = function(n){
+  var r = 0;
+  for(var i = 1; i<= n;i++){
+    r+=i;
+  }
+  return r;
+}
+
+var divisorsNum = function(n){
+  var r = 1;
+  var half = Math.floor(n/2)
+  var decrement = 2;
+  if(n%2 ===0){
+    decrement = 1;
+  } else if (half%2===0){
+    half -=1;
+  }
+  for(var i = half;i>0;i-=decrement){
+    if(n%i===0){
+      r+=1;
+    }
+  }  
+  return r;
+}
+
+
+var divisors = function(n){
+  var r = [n];
+  var half = Math.floor(n/2)
+  var decrement = 2;
+  if(n%2 ===0){
+    decrement = 1;
+  } else if (half%2===0){
+    half -=1;
+  }
+  for(var i = half;i>0;i-=decrement){
+    if(n%i===0){
+      r.push(i);
+    }
+  }  
+  return r;
+}
+
+var isDiv = function(d, n){
+  for(var i = d; i > 0; i--){
+    if(n%d!==0){
+      return false;
+    }    
+  }
+  return true;
+}
+
+var prob12Func = function(minDivisors){
+  var nat=0, divNum=0, i=0;
+  if(minDivisors >0){
+    do{
+      i+=1;
+      nat += i;
+      divNum = divisorsNum(nat);
+    }while(divNum < minDivisors);
+    var d = divisors(nat);
+    console.log('num '+nat+' i '+ i +' div: '+ divNum + ' divisors: ' + d);
+  }
+  return nat;
+}

@@ -123,6 +123,11 @@ var main = function() {
     $('.11').text(prob11);
 	});
   
+  // problem 12
+  // 8 mins computation
+  // brute force solution
+  // var prob12 = prob12Func(501);
+  // console.log(prob12);
 
 };
 // end of main function

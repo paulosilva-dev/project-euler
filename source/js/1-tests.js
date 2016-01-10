@@ -38,3 +38,8 @@ var test = function(fun,arg,expec){
 
 // test(prob12Func, 4, 6);
 // test(prob12Func, 6, 28);
+
+// test(prob12Func, 26, 2016);
+// test(prob12FuncOpt, 26, 2016);
+// test(prob12Func, 106, 73920);
+// test(prob12FuncOpt, 106, 73920);

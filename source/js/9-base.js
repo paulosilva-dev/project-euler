@@ -128,6 +128,10 @@ var main = function() {
   // brute force solution
   // var prob12 = prob12Func(501);
   // console.log(prob12);
+  //
+  // optimized solution
+  // var prob12 = prob12FuncOpt(501);
+  // console.log(prob12);
 
 };
 // end of main function

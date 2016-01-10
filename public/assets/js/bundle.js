@@ -558,6 +558,47 @@ var prob12Func = function(minDivisors){
   }
   return nat;
 }
+
+var prob12FuncOpt = function(minDinvisors){
+  var n=3;    //start with a prime
+  var dn=2;   //number of divisors for any prime
+  var cnt=0;  //to insure the while loop is entered
+  var n1, dn1, exponent;
+  var p = 65500;
+  
+  var primeArray = primes(p);
+  var lp = primeArray.length;
+  while(cnt <= minDinvisors) {
+    n +=1;
+    n1 = n;
+    if(n1%2 === 0){
+      n1 = n1/2;
+    }
+    dn1 = 1;
+    for (var i=0; i<lp; i++){
+      
+      if(primeArray[i]*primeArray[i] > n1){
+        dn1 = 2*dn1;
+        break;
+      }
+      exponent=1;
+      while (n1%primeArray[i] === 0) {
+        exponent+=1;
+        n1 = n1/primeArray[i];
+      }
+      
+      if(exponent > 1){
+        dn1 = dn1*exponent;
+      }
+      if(n1 ===1){
+        break;
+      }
+    }
+  cnt = dn*dn1;
+  dn = dn1;    
+  }
+  return n*(n-1)/2;
+}
 //simple test function :
 // used to test result and check algorithm performance
 var test = function(fun,arg,expec){
@@ -598,6 +639,12 @@ var test = function(fun,arg,expec){
 
 // test(prob12Func, 4, 6);
 // test(prob12Func, 6, 28);
+
+// test(prob12Func, 26, 2016);
+// test(prob12FuncOpt, 26, 2016);
+// test(prob12Func, 106, 73920);
+// test(prob12FuncOpt, 106, 73920);
+
 var main = function() {
 	
 	// problem 1
@@ -727,6 +774,10 @@ var main = function() {
   // 8 mins computation
   // brute force solution
   // var prob12 = prob12Func(501);
+  // console.log(prob12);
+  //
+  // optimized solution
+  // var prob12 = prob12FuncOpt(501);
   // console.log(prob12);
 
 };

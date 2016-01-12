@@ -599,3 +599,13 @@ var prob12FuncOpt = function(minDinvisors){
   }
   return n*(n-1)/2;
 }
+
+var prob13Func = function(numStr) {
+  
+  var sumDigit = 0;
+  for(var j = numStr.length-1; j>=0; j--){
+    sumDigit += parseInt(numStr[j][2]);
+  }
+  
+  return sumDigit;
+};

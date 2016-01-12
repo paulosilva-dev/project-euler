@@ -43,3 +43,28 @@ var test = function(fun,arg,expec){
 // test(prob12FuncOpt, 26, 2016);
 // test(prob12Func, 106, 73920);
 // test(prob12FuncOpt, 106, 73920);
+
+// problem 13
+var p13t1 = [];
+p13t1.push("000");
+p13t1.push("000");
+p13t1.push("000");
+test(prob13Func, p13t1, 0);
+
+var p13t2 = [];
+p13t2.push("000");
+p13t2.push("001");
+p13t2.push("002");
+test(prob13Func, p13t2, 3);
+
+var p13t3 = [];
+p13t3.push("201");
+p13t3.push("342");
+p13t3.push("798");
+test(prob13Func, p13t3, 1341);
+
+var p13t4 = [];
+p13t4.push("2501");
+p13t4.push("3442");
+p13t4.push("7958");
+test(prob13Func, p13t4, 13901);

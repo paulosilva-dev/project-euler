@@ -600,12 +600,63 @@ var prob12FuncOpt = function(minDinvisors){
   return n*(n-1)/2;
 }
 
-var prob13Func = function(numStr) {
-  
-  var sumDigit = 0;
-  for(var j = numStr.length-1; j>=0; j--){
-    sumDigit += parseInt(numStr[j][2]);
+//////////////
+// Problem 13
+//////////////
+
+//normalizes an array r so each elem is 1 digit only:
+var normalizeNumArr = function(r){
+  var mlt = 1;
+  var remainer = 0;
+  for(var i = 0, l=r.length;i<l;i++){
+    mlt = 1;
+    remainer = 0;
+    while(r[i]>9){
+      remainer += mlt*Math.floor(r[i]/10);
+      r[i]=r[i]%10;
+      mlt *=10;
+    }
+    if(remainer !== 0){
+      if(i<l-1){
+        r[i+1] += remainer;
+      } else {
+        r.push(remainer);
+        l +=1;      
+      }
+    }
   }
+  // it changes the array in place, but ill return r for a bit more flexibility
+  return r;
+}
+
+var getXNums = function(a, howMany){
+  var r = 0;
+  var l = a.length;
+  if(l<howMany){
+    howMany = l;
+  }
+  for(var i=0;i<howMany;i++){
+    r*=10;
+    r+=a[l-1-i];
+  }
+  return r;
+}
+
+var prob13Func = function(numStr) {
+  var r = [];
+  var sumDigit = 0;
+  // Im assuming that all numbers have the same length
+  // it is true for the case in question
+  var numLgt = numStr[0].length;
   
-  return sumDigit;
+  // getting the result for each digit:
+  for(var i = numLgt-1; i>=0; i--){
+    sumDigit=0;
+    for(var j = numStr.length-1; j>=0; j--){
+      sumDigit += parseInt(numStr[j][i]);
+    }
+    r.push(sumDigit);
+  }
+  normalizeNumArr(r);  
+  return getXNums(r, 10);
 };

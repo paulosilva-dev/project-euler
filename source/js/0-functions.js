@@ -660,3 +660,22 @@ var prob13Func = function(numStr) {
   normalizeNumArr(r);  
   return getXNums(r, 10);
 };
+
+//////////////
+// Problem 14
+//////////////
+
+var collatzSeq = function(n){
+  var c = n;
+  var r = [];
+  r.push(c);
+  do{
+    if(c%2===0){
+      c = c/2;
+    } else {
+      c = c*3+1;
+    }
+    r.push(c);
+  } while(c > 1);
+  return r;
+};

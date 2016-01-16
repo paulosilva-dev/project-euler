@@ -5,7 +5,16 @@ var test = function(fun,arg,expec){
   var result;
 	var s = new Date();
   result = fun(arg);
-  passed = result===expec;
+  if(result.constructor === Array){
+    passed = true;
+    for(var i=0, l = result.length;i<l;i++){
+      if(result[i]!==expec[i]){
+        passed = false;
+      }
+    }
+  } else{
+    passed = result===expec;    
+  }
 	var e = new Date();
   if(passed){
     console.log('########## Passed! ##########');
@@ -68,3 +77,19 @@ var test = function(fun,arg,expec){
 // p13t4.push("3442");
 // p13t4.push("7958");
 // test(prob13Func, p13t4, 13901);
+
+
+// problem 14
+var p14t1 = [];
+p14t1.push(13);
+p14t1.push(40);
+p14t1.push(20);
+p14t1.push(10);
+p14t1.push(5);
+p14t1.push(16);
+p14t1.push(8);
+p14t1.push(4);
+p14t1.push(2);
+p14t1.push(1);
+
+test(collatzSeq, 13, p14t1);

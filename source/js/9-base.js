@@ -243,6 +243,13 @@ var main = function() {
     console.log(prob13);
     $('.13').text(prob13);
 	});
+  
+    // problem 14 - Longest Collatz sequence
+    $('.btn-14').click(function(){
+      var prob14 = prob14Func(1000000);
+      console.log(prob14);
+      $('.14').text(prob14);
+    });
 };
 // end of main function
 

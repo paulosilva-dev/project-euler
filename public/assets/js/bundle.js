@@ -679,6 +679,19 @@ var collatzSeq = function(n){
   } while(c > 1);
   return r;
 };
+
+var prob14Func = function(max){
+  var n = max;
+  var bigest = 0, bLength = 0;
+  for(var i = n; i>1;i--){
+    var s = collatzSeq(i);
+    if(s.length>bLength){
+      bigest = i;
+      bLength = s.length;
+    }
+  }
+  return bigest;
+}
 //simple test function :
 // used to test result and check algorithm performance
 var test = function(fun,arg,expec){
@@ -761,19 +774,19 @@ var test = function(fun,arg,expec){
 
 
 // problem 14
-var p14t1 = [];
-p14t1.push(13);
-p14t1.push(40);
-p14t1.push(20);
-p14t1.push(10);
-p14t1.push(5);
-p14t1.push(16);
-p14t1.push(8);
-p14t1.push(4);
-p14t1.push(2);
-p14t1.push(1);
+// var p14t1 = [];
+// p14t1.push(13);
+// p14t1.push(40);
+// p14t1.push(20);
+// p14t1.push(10);
+// p14t1.push(5);
+// p14t1.push(16);
+// p14t1.push(8);
+// p14t1.push(4);
+// p14t1.push(2);
+// p14t1.push(1);
 
-test(collatzSeq, 13, p14t1);
+// test(collatzSeq, 13, p14t1);
 var main = function() {
 	
 	// problem 1
@@ -1019,6 +1032,13 @@ var main = function() {
     console.log(prob13);
     $('.13').text(prob13);
 	});
+  
+    // problem 14 - Longest Collatz sequence
+    $('.btn-14').click(function(){
+      var prob14 = prob14Func(1000000);
+      console.log(prob14);
+      $('.14').text(prob14);
+    });
 };
 // end of main function
 

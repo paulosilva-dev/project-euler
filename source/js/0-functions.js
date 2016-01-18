@@ -679,3 +679,16 @@ var collatzSeq = function(n){
   } while(c > 1);
   return r;
 };
+
+var prob14Func = function(max){
+  var n = max;
+  var bigest = 0, bLength = 0;
+  for(var i = n; i>1;i--){
+    var s = collatzSeq(i);
+    if(s.length>bLength){
+      bigest = i;
+      bLength = s.length;
+    }
+  }
+  return bigest;
+}

@@ -683,12 +683,18 @@ var collatzSeq = function(n){
 var prob14Func = function(max){
   var n = max;
   var bigest = 0, bLength = 0;
-  for(var i = n; i>1;i--){
-    var s = collatzSeq(i);
-    if(s.length>bLength){
-      bigest = i;
-      bLength = s.length;
+  // since a number in a lower half will necessary have it's double on the upper one
+  var limit = max/2 -1;
+  for(var i = n; i>limit;i--){
+    // since all even nums are halfed untill its odd 
+    if(i%2 !== 0){
+      var s = collatzSeq(i);
+      if(s.length>bLength){
+        bigest = i;
+        bLength = s.length;
+      }
     }
   }
+  
   return bigest;
 }

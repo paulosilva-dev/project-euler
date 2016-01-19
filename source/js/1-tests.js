@@ -93,3 +93,4 @@ var test = function(fun,arg,expec){
 // p14t1.push(1);
 
 // test(collatzSeq, 13, p14t1);
+// test(prob14Func, 1000000, 837799);

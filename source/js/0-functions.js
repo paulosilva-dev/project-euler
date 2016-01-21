@@ -7,7 +7,7 @@ var uniqueList = function(list){
 			r.push(list[i]);
 			h[list[i]]=true;
 		}
-	}	
+	}
 	return r;
 };
 
@@ -26,13 +26,13 @@ var multiplesOf = function(nums, max){
 			current = nums[i]*j;
 		}
 	}
-	// removing duplicates: 
+	// removing duplicates:
 	multiples=uniqueList(multiples);
 	// calculating final sum
 	for(var i = 0, l=multiples.length;i<l;i++){
-		sum += multiples[i]; 
+		sum += multiples[i];
 	}
-	
+
 	return sum;
 };
 
@@ -65,7 +65,7 @@ var evenFib=function(max){
 };
 
 //////////////
-// problem 3 
+// problem 3
 //////////////
 
 //checks if a number is a prime number
@@ -82,23 +82,23 @@ var isItPrime = function(n){
 		if(n%i===0 || n %(i+2)===0){
 			return false;
 		}
-		i += 6; 
+		i += 6;
 	}
 	return true;
-}
+};
 
 //generates prime numbers till max value
 var primes = function(max){
 	var primesList = [2];
 	//no point in doing even numbers
 	//so I'm increasing by 2
-	for(var i =3; i<max;i+=2){		
+	for(var i =3; i<max;i+=2){
 		if(isItPrime(i)){
 			primesList.push(i);
 		}
 	}
 	return primesList;
-}
+};
 
 
 // generates prime factors
@@ -106,7 +106,7 @@ var primeFactors= function(num){
 	var factorsList= [];
 	if(isItPrime(num)){
 		factorsList.push(num);
-		return factorsList;		
+		return factorsList;
 	}else {
 		// max prime to be calculated as a factor
 		var maxPrime = 10000;
@@ -123,17 +123,17 @@ var primeFactors= function(num){
 				}
 				if(i>=l){
 					oORange = true;
-					console.log('Out of range');		
+					console.log('Out of range');
 				}
 				i++;
 		}while(remainer!=1 && !oORange);
 		return factorsList;
-	}	
+	}
 };
 
 
 //////////////
-// problem 4 
+// problem 4
 //////////////
 
 var isItPalindrome = function(num){
@@ -143,7 +143,7 @@ var isItPalindrome = function(num){
 	}
 	//getting each digit into an array
 	//comes out reversed, doesn't really matter
-	//for calculation  
+	//for calculation
 	do{
 		arr.push(num%10);
 		num=Math.floor(num/10);
@@ -152,7 +152,7 @@ var isItPalindrome = function(num){
 	for(var i=0, halfL=arr.length/2, lasti = arr.length-1;i<halfL;i++){
 		if(arr[i] !== arr[lasti-i]){
 			isIt = false;
-		};
+		}
 	}
 	return isIt;
 };
@@ -169,7 +169,7 @@ var maxPali = function(num){
 					//checking if factors are in range
 					if(b%i===0 && b/i<num+1){
 						console.log('Found: '+b+' = ' + i +'*'+ b/i);
-						return b;						
+						return b;
 					}
 				}
 			}
@@ -180,10 +180,10 @@ var maxPali = function(num){
 
 // alternative version to solve the problem 4
 var maxPalib = function(max){
+var maxPaliNum=0;
 	if(max>0){
 		var min = Math.ceil(max/10);
 		var factors=[];
-		var maxPaliNum=0;
 		var it = 0;
 		for(var a = max; a*max > maxPaliNum;a--){
 			for(var b = a, mult = 0; b*a > maxPaliNum;b--){
@@ -192,7 +192,7 @@ var maxPalib = function(max){
 				if(isItPalindrome(mult)&&mult>maxPaliNum){
 					maxPaliNum = mult;
 					factors=[a,b];
-				}				
+				}
 			}
 		}
 		console.log('Found: '+maxPaliNum+' = ' + factors[0] +'*'+ factors[1]+' iterations '+it);
@@ -213,7 +213,7 @@ var factorial = function(num){
 		result = result * i;
 	}
 	return result;
-}
+};
 
 var isItEvenDiv = function(num, maxDiv){
 	var isIt = true;
@@ -227,7 +227,7 @@ var isItEvenDiv = function(num, maxDiv){
 		}
 	}
 	return isIt;
-}
+};
 
 var evenMultiple = function(num){
 	var max = factorial(num);
@@ -239,7 +239,7 @@ var evenMultiple = function(num){
 		}
 	}
 	return 0;
-}
+};
 
 //////////////
 // Problem 6
@@ -252,13 +252,13 @@ var sum = function(num){
     return num+sum(num-1);
   }
   return 0;
-}
+};
 
 // sum function
 // optimized solution
 var sumB = function(num){
   return (num*(num+1))/2;
-}
+};
 
 // sum of squares function
 // recusive solution
@@ -267,18 +267,18 @@ var sqrSum= function(num){
     return num*num+sqrSum(num-1);
   }
   return 1;
-}
+};
 
 // sum of squares function
 // optimized solution
 var sqrSumB= function(num){
   return ((2*num+1)*(num+1)*num)/6;
-}
+};
 
 var sumSqrDiff = function(num){
-  var s = sumB(num); 
+  var s = sumB(num);
   return s*s-sqrSumB(num);
-}
+};
 
 
 //////////////
@@ -296,7 +296,7 @@ var nPrime = function(num){
     if(isItPrime(i)){
       ord++;
       prime = i;
-    }    
+    }
   }
   return prime;
 };
@@ -311,12 +311,12 @@ var prod = function(arrayN){
   var r = 1;
   for(var i=0, l = arrayN.length; i<l; i++){
     if(arrayN[i]===0){
-      return 0;      
+      return 0;
     }
     r *= arrayN[i];
   }
   return r;
-}
+};
 
 
 var prob8Func = function(bigN, nDigits){
@@ -325,28 +325,28 @@ var prob8Func = function(bigN, nDigits){
   for(var i = 0, l=seriesArray.length; i<l;i++){
     seriesArray[i]=parseInt(seriesArray[i]);
   }
-  
+
   // finding the highest product
   var candidates = [];
   var biggerProd = 0;
   for(var i= 0,l = seriesArray.length-nDigits;i<l;i++){
     var digits = [];
-    
+
     for(var j=0;j<nDigits;j++){
       digits.push(seriesArray[i+j]);
     }
-    
+
     var prodDigits = prod(digits);
-    
+
     if(biggerProd<prodDigits){
       biggerProd = prodDigits;
       candidates = digits;
     }
-    
+
   }
   console.log('product: '+ biggerProd + ' digits: ' + candidates);
   return biggerProd;
-}
+};
 
 //////////////
 // Problem 9
@@ -362,10 +362,11 @@ var getP9Candidates = function(){
           // because we know there is only 1
           // it will return the first one found if
           // limit was diferent
-          return cand.push=[a,b,c];
+					cand=[a,b,c];
+          return cand;
         }
       }
-    }    
+    }
   }
   return cand;
 };
@@ -373,7 +374,7 @@ var getP9Candidates = function(){
 var prob9Func = function(){
   var candidates = getP9Candidates();
   console.log(candidates);
-  return candidates[0]*candidates[1]*candidates[2];  
+  return candidates[0]*candidates[1]*candidates[2];
 };
 
 //////////////
@@ -386,13 +387,13 @@ var sumArray = function(a){
     r+=a[i];
   }
   return r;
-}
+};
 
 var prob10Func = function(max){
     //using primes function made for prob3
     var primeList = primes(max);
     return sumArray(primeList);
-}
+};
 
 //////////////
 // Problem 11
@@ -408,7 +409,7 @@ var prob11Func = function(oGrid){
       numGrid[i][j] = parseInt( numGrid[i][j] );
     }
   }
-  
+
   // max Multiplication array
   // result on index 0, factors array in index 1
   var multMult = [];
@@ -419,17 +420,17 @@ var prob11Func = function(oGrid){
   var multVer = 1;
   for(var y=0, h=numGrid.length;y<h;y++){
     for(var x=0, l=numGrid[y].length;x<l;x++){
-      
-      
+
+
       // check if at vertical limit:
       if( y+4<h ){
-        
+
         //vertical mult:
         multVer = 1;
           for(var i = 0;i<4;i++){
             multVer *= numGrid[y+i][x];
           }
-          
+
           if(multVer > multMult[0]){
             multMult[0]=multDiag;
             multMult[1]=[];
@@ -437,18 +438,18 @@ var prob11Func = function(oGrid){
               multMult[1].push(numGrid[y+i][x]);
             }
           }
-        
-        
+
+
         // check if at horizontal limit:
         if( x+4<l ){
-          
+
           multDiag = 1;
           multHor = 1;
           for(var i = 0;i<4;i++){
             multDiag *= numGrid[y+i][x+i];
             multHor *= numGrid[y][x+i];
           }
-          
+
           if(multDiag > multMult[0]){
             multMult[0]=multDiag;
             multMult[1]=[];
@@ -456,18 +457,18 @@ var prob11Func = function(oGrid){
               multMult[1].push(numGrid[y+i][x+i]);
             }
           }
-          
+
           if(multHor > multMult[0]){
             multMult[0]=multHor;
             multMult[1]=[];
             for(var i = 0;i<4;i++){
               multMult[1].push(numGrid[y][x+i]);
             }
-          }          
-          
+          }
+
         }
         if( x-4>0 ){
-          
+
           multDiag = 1;
           for(var i = 0;i<4;i++){
             multDiag *= numGrid[y+i][x-i];
@@ -479,20 +480,20 @@ var prob11Func = function(oGrid){
               multMult[1].push(numGrid[y+i][x-i]);
             }
           }
-            
+
         }
       }
     }
   }
   console.log(multMult);
-  
+
   return multMult[0];
-}
+};
 
 
 
 //////////////
-// Problem 12 
+// Problem 12
 //////////////
 
 var triangleNum = function(n){
@@ -501,11 +502,11 @@ var triangleNum = function(n){
     r+=i;
   }
   return r;
-}
+};
 
 var divisorsNum = function(n){
   var r = 1;
-  var half = Math.floor(n/2)
+  var half = Math.floor(n/2);
   var decrement = 2;
   if(n%2 ===0){
     decrement = 1;
@@ -516,14 +517,14 @@ var divisorsNum = function(n){
     if(n%i===0){
       r+=1;
     }
-  }  
+  }
   return r;
-}
+};
 
 
 var divisors = function(n){
   var r = [n];
-  var half = Math.floor(n/2)
+  var half = Math.floor(n/2);
   var decrement = 2;
   if(n%2 ===0){
     decrement = 1;
@@ -534,18 +535,18 @@ var divisors = function(n){
     if(n%i===0){
       r.push(i);
     }
-  }  
+  }
   return r;
-}
+};
 
 var isDiv = function(d, n){
   for(var i = d; i > 0; i--){
     if(n%d!==0){
       return false;
-    }    
+    }
   }
   return true;
-}
+};
 
 var prob12Func = function(minDivisors){
   var nat=0, divNum=0, i=0;
@@ -557,7 +558,7 @@ var prob12Func = function(minDivisors){
     }while(divNum < minDivisors);
   }
   return nat;
-}
+};
 
 var prob12FuncOpt = function(minDinvisors){
   var n=3;    //start with a prime
@@ -565,7 +566,7 @@ var prob12FuncOpt = function(minDinvisors){
   var cnt=0;  //to insure the while loop is entered
   var n1, dn1, exponent;
   var p = 65500;
-  
+
   var primeArray = primes(p);
   var lp = primeArray.length;
   while(cnt <= minDinvisors) {
@@ -576,7 +577,7 @@ var prob12FuncOpt = function(minDinvisors){
     }
     dn1 = 1;
     for (var i=0; i<lp; i++){
-      
+
       if(primeArray[i]*primeArray[i] > n1){
         dn1 = 2*dn1;
         break;
@@ -586,7 +587,7 @@ var prob12FuncOpt = function(minDinvisors){
         exponent+=1;
         n1 = n1/primeArray[i];
       }
-      
+
       if(exponent > 1){
         dn1 = dn1*exponent;
       }
@@ -595,10 +596,10 @@ var prob12FuncOpt = function(minDinvisors){
       }
     }
   cnt = dn*dn1;
-  dn = dn1;    
+  dn = dn1;
   }
   return n*(n-1)/2;
-}
+};
 
 //////////////
 // Problem 13
@@ -621,13 +622,13 @@ var normalizeNumArr = function(r){
         r[i+1] += remainer;
       } else {
         r.push(remainer);
-        l +=1;      
+        l +=1;
       }
     }
   }
   // it changes the array in place, but ill return r for a bit more flexibility
   return r;
-}
+};
 
 var getXNums = function(a, howMany){
   var r = 0;
@@ -640,7 +641,7 @@ var getXNums = function(a, howMany){
     r+=a[l-1-i];
   }
   return r;
-}
+};
 
 var prob13Func = function(numStr) {
   var r = [];
@@ -648,7 +649,7 @@ var prob13Func = function(numStr) {
   // Im assuming that all numbers have the same length
   // it is true for the case in question
   var numLgt = numStr[0].length;
-  
+
   // getting the result for each digit:
   for(var i = numLgt-1; i>=0; i--){
     sumDigit=0;
@@ -657,7 +658,7 @@ var prob13Func = function(numStr) {
     }
     r.push(sumDigit);
   }
-  normalizeNumArr(r);  
+  normalizeNumArr(r);
   return getXNums(r, 10);
 };
 
@@ -686,7 +687,7 @@ var prob14Func = function(max){
   // since a number in a lower half will necessary have it's double on the upper one
   var limit = max/2 -1;
   for(var i = n; i>limit;i--){
-    // since all even nums are halfed untill its odd 
+    // since all even nums are halfed untill its odd
     if(i%2 !== 0){
       var s = collatzSeq(i);
       if(s.length>bLength){
@@ -695,6 +696,6 @@ var prob14Func = function(max){
       }
     }
   }
-  
+
   return bigest;
-}
+};

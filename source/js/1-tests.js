@@ -13,7 +13,7 @@ var test = function(fun,arg,expec){
       }
     }
   } else{
-    passed = result===expec;    
+    passed = result===expec;
   }
 	var e = new Date();
   if(passed){
@@ -25,7 +25,7 @@ var test = function(fun,arg,expec){
   console.log('# for input: '+arg);
   console.log('# expected: '+expec+'   got: '+ result);
 	console.log('# computed in: '+(e-s)+'ms');
-}
+};
 
 //
 //  TESTS:
@@ -94,3 +94,7 @@ var test = function(fun,arg,expec){
 
 // test(collatzSeq, 13, p14t1);
 // test(prob14Func, 1000000, 837799);
+
+// problem 15
+// test(prob15Func, 2, 6);
+// test(prob15Func, 20, 137846528820);

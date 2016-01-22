@@ -29,7 +29,7 @@ var multiplesOf = function(nums, max){
 	// removing duplicates:
 	multiples=uniqueList(multiples);
 	// calculating final sum
-	for(var i = 0, l=multiples.length;i<l;i++){
+	for(i = 0, l=multiples.length;i<l;i++){
 		sum += multiples[i];
 	}
 
@@ -329,7 +329,7 @@ var prob8Func = function(bigN, nDigits){
   // finding the highest product
   var candidates = [];
   var biggerProd = 0;
-  for(var i= 0,l = seriesArray.length-nDigits;i<l;i++){
+  for(i= 0,l = seriesArray.length-nDigits;i<l;i++){
     var digits = [];
 
     for(var j=0;j<nDigits;j++){
@@ -401,11 +401,11 @@ var prob10Func = function(max){
 
 var prob11Func = function(oGrid){
   var numGrid = [];
-  for(var i = 0, l=oGrid.length;i<l;i++){
+  for(var i = 0;i<oGrid.length;i++){
     numGrid.push(oGrid[i].split(' '));
   }
-  for(var i = 0, h=numGrid.length;i<h;i++){
-    for(var j = 0, l=numGrid[i].length;j<l;j++){
+  for(i = 0;i<numGrid.length;i++){
+    for(var j = 0;j<numGrid[i].length;j++){
       numGrid[i][j] = parseInt( numGrid[i][j] );
     }
   }
@@ -418,34 +418,34 @@ var prob11Func = function(oGrid){
   var multDiag = 1;
   var multHor = 1;
   var multVer = 1;
-  for(var y=0, h=numGrid.length;y<h;y++){
-    for(var x=0, l=numGrid[y].length;x<l;x++){
+  for(var y=0;y<numGrid.length;y++){
+    for(var x=0 ;x<numGrid[y].length;x++){
 
 
       // check if at vertical limit:
-      if( y+4<h ){
+      if( y+4<numGrid[y].length ){
 
         //vertical mult:
         multVer = 1;
-          for(var i = 0;i<4;i++){
+          for(i = 0;i<4;i++){
             multVer *= numGrid[y+i][x];
           }
 
           if(multVer > multMult[0]){
             multMult[0]=multDiag;
             multMult[1]=[];
-            for(var i = 0;i<4;i++){
+            for(i = 0;i<4;i++){
               multMult[1].push(numGrid[y+i][x]);
             }
           }
 
 
         // check if at horizontal limit:
-        if( x+4<l ){
+        if( x+4<numGrid.length ){
 
           multDiag = 1;
           multHor = 1;
-          for(var i = 0;i<4;i++){
+          for(i = 0;i<4;i++){
             multDiag *= numGrid[y+i][x+i];
             multHor *= numGrid[y][x+i];
           }
@@ -453,7 +453,7 @@ var prob11Func = function(oGrid){
           if(multDiag > multMult[0]){
             multMult[0]=multDiag;
             multMult[1]=[];
-            for(var i = 0;i<4;i++){
+            for(i = 0;i<4;i++){
               multMult[1].push(numGrid[y+i][x+i]);
             }
           }
@@ -461,7 +461,7 @@ var prob11Func = function(oGrid){
           if(multHor > multMult[0]){
             multMult[0]=multHor;
             multMult[1]=[];
-            for(var i = 0;i<4;i++){
+            for(i = 0;i<4;i++){
               multMult[1].push(numGrid[y][x+i]);
             }
           }
@@ -470,13 +470,13 @@ var prob11Func = function(oGrid){
         if( x-4>0 ){
 
           multDiag = 1;
-          for(var i = 0;i<4;i++){
+          for(i = 0;i<4;i++){
             multDiag *= numGrid[y+i][x-i];
           }
           if(multDiag > multMult[0]){
             multMult[0]=multDiag;
             multMult[1]=[];
-            for(var i = 0;i<4;i++){
+            for(i = 0;i<4;i++){
               multMult[1].push(numGrid[y+i][x-i]);
             }
           }
@@ -698,4 +698,23 @@ var prob14Func = function(max){
   }
 
   return bigest;
+};
+
+
+var prob15Func = function(n){
+	var grid = [];
+	var count = 0;
+	for(var y =0; y<= n; y++){
+		grid.push([]);
+		for (var x = 0; x <= n; x++) {
+			if(x===0 || y === 0){
+				grid[y].push(1);
+			} else {
+				count = grid[y][x-1];
+				count += grid[y-1][x];
+				grid[y].push(count);
+			}
+		}
+	}
+	return grid[n][n];
 };

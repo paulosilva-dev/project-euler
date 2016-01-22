@@ -1,19 +1,19 @@
 var main = function() {
-	
+
 	// problem 1
 	$('.btn-1').click(function(){
 		var prob1 = multiplesOf([3,5],1000);
 		console.log('prob1: ' + prob1);
 		$('.1').text(prob1);
 	});
-	
+
 	// problem 2
 	$('.btn-2').click(function(){
 		var prob2 = evenFib(4000000);
 		console.log('prob2: ' + prob2);
 		$('.2').text(prob2);
 	});
-	
+
 	// problem 3
 	$('.btn-3').click(function(){
 		var prob3 = primeFactors(600851475143);
@@ -21,14 +21,14 @@ var main = function() {
 		console.log('factors: '+ prob3);
 		$('.3').text(prob3[prob3.length-1]);
 	});
-	
-	// problem 4	
+
+	// problem 4
 	$('.btn-4').click(function(){
 		var prob4 = maxPali(999);
 		console.log('prob4: ' + prob4);
 		$('.4').text(prob4);
 	});
-	
+
 	// alternative solution to prob 4
 	// var prob4b = maxPalib(999);
 	// console.log('prob4b: ' + prob4b);
@@ -38,23 +38,23 @@ var main = function() {
 		console.log('prob5: ' + prob5);
 		$('.5').text(prob5);
 	});
-	  
+
 	// problem 6
 	$('.btn-6').click(function(){
     var prob6 = sumSqrDiff(100);
     console.log('prob6: ' + prob6);
 		$('.6').text(prob6);
 	});
-  
+
 	// problem 7
 	$('.btn-7').click(function(){
     var prob7 = nPrime(10001);
     console.log('prob7: ' + prob7);
 		$('.7').text(prob7);
 	});
-  
+
   // problem 8
-  
+
 	$('.btn-8').click(function(){
     var numSeries =  '73167176531330624919225119674426574742355349194934';
         numSeries += '96983520312774506326239578318016984801869478851843';
@@ -80,24 +80,24 @@ var main = function() {
     console.log('prob8: '+ prob8);
 		$('.8').text(prob8);
 	});
-  
+
   // problem 9
 	$('.btn-9').click(function(){
     var prob9 = prob9Func();
     console.log('prob9: '+ prob9);
     $('.9').text(prob9);
 	});
-  
+
   // problem 10
-	$('.btn-10').click(function(){  
+	$('.btn-10').click(function(){
     var prob10 = prob10Func(2000000);
     console.log(prob10);
     $('.10').text(prob10);
 	});
-  
+
   // problem 11
 	$('.btn-11').click(function(){
-    var numGrid = []; 
+    var numGrid = [];
     numGrid.push('08 02 22 97 38 15 00 40 00 75 04 05 07 78 52 12 50 77 91 08');
     numGrid.push('49 49 99 40 17 81 18 57 60 87 17 40 98 43 69 48 04 56 62 00');
     numGrid.push('81 49 31 73 55 79 14 29 93 71 40 67 53 88 30 03 49 13 36 65');
@@ -122,7 +122,7 @@ var main = function() {
     console.log(prob11);
     $('.11').text(prob11);
 	});
-  
+
   // problem 12
 	$('.btn-12').click(function(){
   // around 8 mins computation @3ghz cpu
@@ -243,13 +243,21 @@ var main = function() {
     console.log(prob13);
     $('.13').text(prob13);
 	});
-  
+
     // problem 14 - Longest Collatz sequence
     $('.btn-14').click(function(){
       var prob14 = prob14Func(1000000);
       console.log(prob14);
       $('.14').text(prob14);
     });
+
+    // problem 15 - Lattice paths
+    $('.btn-15').click(function(){
+	    var prob15 = prob15Func(20);
+	    console.log(prob15);
+      $('.15').text(prob15);
+    });
+
 };
 // end of main function
 

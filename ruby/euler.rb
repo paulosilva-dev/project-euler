@@ -10,6 +10,7 @@ def test(fn, arg, exp , title)
   else
     puts "<< Failed! <<"
   end
+  puts "for input : #{arg}"
   puts "expected : #{exp}"
   puts "result   : #{r}"
   puts "-- Time taken: #{(endTime-startTime)*1000}ms --"
@@ -56,3 +57,52 @@ end
 
 test(fn = method(:p2), 89, 44, "Prob2 - base test")
 test(fn = method(:p2), 4000000, 4613732, "Prob2 - test question")
+
+# ##########
+# problem 3
+# ##########
+
+def isItPrime?(n)
+  if n <= 1
+    return false
+  end
+  if n <= 3
+    return true
+  end
+  if n%2 == 0 || n%3 == 0
+    return false
+  end
+  x = 5
+  while x*x <= n
+    if n%x == 0 || n%(x+2) == 0
+      return false
+    end
+    x += 6
+  end
+  return true
+end
+
+def p3(n)
+  prime = Math.sqrt(n).floor
+  if prime%2 == 0
+    prime +=1
+  end
+  begin
+    if isItPrime?(prime)
+      if n%prime == 0
+        return prime
+      end
+    end
+    prime -=2
+  end while prime > 1
+  return 0
+end
+
+# test(fn = method(:isItPrime?), 2, true, "prime test")
+# test(fn = method(:isItPrime?), 29, true, "prime test")
+# test(fn = method(:isItPrime?), 15, false, "prime test")
+# test(fn = method(:isItPrime?), 997, true, "prime test")
+# test(fn = method(:isItPrime?), 13195, false, "prime test")
+
+test(fn = method(:p3), 13195, 29, "Prob3 - base test")
+test(fn = method(:p3), 600851475143, 6857, "Prob3 - test question")

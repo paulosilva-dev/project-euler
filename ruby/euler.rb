@@ -32,8 +32,10 @@ def p1(n)
   return sum
 end
 
-test(fn = method(:p1), 10, 23, "Prob1 - base test")
-test(fn = method(:p1), 1000, 233168, "Prob1 - test question")
+# p1 tests
+
+# test(fn = method(:p1), 10, 23, "Prob1 - base test")
+# test(fn = method(:p1), 1000, 233168, "Prob1 - test question")
 
 # ##########
 # problem 2
@@ -55,8 +57,10 @@ def p2(max)
   return sum
 end
 
-test(fn = method(:p2), 89, 44, "Prob2 - base test")
-test(fn = method(:p2), 4000000, 4613732, "Prob2 - test question")
+# p2 tests
+
+# test(fn = method(:p2), 89, 44, "Prob2 - base test")
+# test(fn = method(:p2), 4000000, 4613732, "Prob2 - test question")
 
 # ##########
 # problem 3
@@ -98,11 +102,57 @@ def p3(n)
   return 0
 end
 
+# p3 tests
+
 # test(fn = method(:isItPrime?), 2, true, "prime test")
 # test(fn = method(:isItPrime?), 29, true, "prime test")
 # test(fn = method(:isItPrime?), 15, false, "prime test")
 # test(fn = method(:isItPrime?), 997, true, "prime test")
 # test(fn = method(:isItPrime?), 13195, false, "prime test")
 
-test(fn = method(:p3), 13195, 29, "Prob3 - base test")
-test(fn = method(:p3), 600851475143, 6857, "Prob3 - test question")
+# test(fn = method(:p3), 13195, 29, "Prob3 - base test")
+# test(fn = method(:p3), 600851475143, 6857, "Prob3 - test question")
+def isPali(n)
+  nArr = []
+  begin
+    r = n%10
+    n = (n/10).floor
+    nArr.push r
+  end while n > 0
+  i = 0
+  l = nArr.length-1
+  begin
+    if(nArr[i]!=nArr[l-i])
+      return false
+    end
+    i+=1
+  end while i <= nArr.length/2
+  return true
+end
+
+def p4(maxN)
+  n1 = maxN
+  n2 = maxN
+  maxMul = 0
+  begin
+    n2 = n1
+    begin
+      n = n1 * n2
+      if isPali(n) && n>maxMul
+        maxMul = n
+      end
+      n2 -= 1
+    end while n2*maxN > maxMul
+    n1 -= 1
+  end while n1*maxN > maxMul
+  return maxMul
+end
+
+# p4 tests
+
+# test(fn = method(:isPali), 919, true, "palindrome test function")
+# test(fn = method(:isPali), 93, false, "palindrome test function")
+# test(fn = method(:isPali), 9009, true, "palindrome test function")
+
+test(fn = method(:p4), 99, 9009, "Prob4 - base test")
+test(fn = method(:p4), 999, 906609, "Prob4 - test question")

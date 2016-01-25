@@ -154,5 +154,37 @@ end
 # test(fn = method(:isPali), 93, false, "palindrome test function")
 # test(fn = method(:isPali), 9009, true, "palindrome test function")
 
-test(fn = method(:p4), 99, 9009, "Prob4 - base test")
-test(fn = method(:p4), 999, 906609, "Prob4 - test question")
+# test(fn = method(:p4), 99, 9009, "Prob4 - base test")
+# test(fn = method(:p4), 999, 906609, "Prob4 - test question")
+
+
+#p5
+def p5(n)
+  max = 1
+  n.times do |i|
+    max *= i+1
+  end
+  inc = n
+  num = 0
+  begin
+    num += inc
+    found = true
+    i=2
+    if n>6
+      i = 5
+    end
+    begin
+      if num%(i+1) != 0
+        found = false
+      end
+      i +=1
+    end while i< n
+  end while !found
+
+  return num
+end
+
+
+# p5 tests
+test(fn = method(:p5), 10, 2520, "Prob5 - base test")
+test(fn = method(:p5), 20, 232792560, "Prob5 - test question")

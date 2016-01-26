@@ -164,13 +164,29 @@ def p5(n)
   n.times do |i|
     max *= i+1
   end
-  inc = n
-  num = 0
+  # getting the minimun num
+  # since he has to be divisible by all primes bellow n
+  # ill start by gettin the minimun num divisible by all them
+  primes = []
+  n.times do |i|
+    if isItPrime?(i)
+      primes.push i
+    end
+  end
+  num = 1
+  primes.each do |i|
+    num *=i
+  end
+  # incrementing by the product of all primes (it needs to be a multiple of it)
+  inc = num
   begin
     num += inc
     found = true
     i=2
-    if n>6
+    # simple optimization
+    # since 4 == 2*2 and 6 == 3*2 no point in checking
+    # for divisors bellow 5
+    if n>=6
       i = 5
     end
     begin

@@ -174,11 +174,11 @@ def p5(n)
       i = 5
     end
     begin
-      if num%(i+1) != 0
+      if num%(i) != 0
         found = false
       end
       i +=1
-    end while i< n
+    end while i< n && found
   end while !found
 
   return num

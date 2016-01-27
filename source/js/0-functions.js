@@ -718,3 +718,54 @@ var prob15Func = function(n){
 	}
 	return grid[n][n];
 };
+
+// prob 16
+
+var twoExp = function(exp){
+	var ar = [1];
+	var n = 0;
+	for (var i =0;i<exp;i+=1){
+		for (var l = ar.length-1;l>=0;l--){
+			n =ar[l];
+			n*=2;
+			ar[l] = n;
+		}
+		// normalizing to a digit per index
+		for (l = ar.length-1;l>=0;l--){
+			n =ar[l];
+			if(n>=10){
+				ar[l] = n%10;
+				if(l>0){
+					ar[l-1] += Math.floor(n/10);
+				} else {
+					ar.unshift(Math.floor(n/10));
+				}
+			}
+		}
+
+	}
+	return ar;
+};
+
+var sumDigits = function(n){
+	var sum =0;
+	var r=0;
+  if(n.constructor === Array){
+		for (var i = 0; i < n.length; i++) {
+			sum +=n[i];
+		}
+	} else {
+		while (n>0) {
+			r = n%10;
+			n= Math.floor(n/10);
+			sum +=r;
+		}
+	}
+	return sum;
+};
+
+var prob16Func = function(exp){
+	var n = twoExp(exp);
+	var r = sumDigits(n);
+	return r;
+};

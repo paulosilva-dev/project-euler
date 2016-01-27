@@ -258,6 +258,13 @@ var main = function() {
       $('.15').text(prob15);
     });
 
+    // problem 16 - Power digit sum
+    $('.btn-16').click(function(){
+	    var prob16 = prob16Func(1000);
+	    console.log(prob16);
+      $('.16').text(prob16);
+    });
+
 };
 // end of main function
 

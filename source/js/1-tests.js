@@ -98,3 +98,10 @@ var test = function(fun,arg,expec){
 // problem 15
 // test(prob15Func, 2, 6);
 // test(prob15Func, 20, 137846528820);
+
+
+// problem 16
+test(twoExp, 15, [3,2,7,6,8]);
+test(sumDigits, 32768, 26);
+test(prob16Func, 15, 26);
+test(prob16Func, 1000, 1366);

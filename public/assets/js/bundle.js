@@ -719,6 +719,57 @@ var prob15Func = function(n){
 	return grid[n][n];
 };
 
+// prob 16
+
+var twoExp = function(exp){
+	var ar = [1];
+	var n = 0;
+	for (var i =0;i<exp;i+=1){
+		for (var l = ar.length-1;l>=0;l--){
+			n =ar[l];
+			n*=2;
+			ar[l] = n;
+		}
+		// normalizing to a digit per index
+		for (l = ar.length-1;l>=0;l--){
+			n =ar[l];
+			if(n>=10){
+				ar[l] = n%10;
+				if(l>0){
+					ar[l-1] += Math.floor(n/10);
+				} else {
+					ar.unshift(Math.floor(n/10));
+				}
+			}
+		}
+
+	}
+	return ar;
+};
+
+var sumDigits = function(n){
+	var sum =0;
+	var r=0;
+  if(n.constructor === Array){
+		for (var i = 0; i < n.length; i++) {
+			sum +=n[i];
+		}
+	} else {
+		while (n>0) {
+			r = n%10;
+			n= Math.floor(n/10);
+			sum +=r;
+		}
+	}
+	return sum;
+};
+
+var prob16Func = function(exp){
+	var n = twoExp(exp);
+	var r = sumDigits(n);
+	return r;
+};
+
 //simple test function :
 // used to test result and check algorithm performance
 var test = function(fun,arg,expec){
@@ -819,6 +870,13 @@ var test = function(fun,arg,expec){
 // problem 15
 // test(prob15Func, 2, 6);
 // test(prob15Func, 20, 137846528820);
+
+
+// problem 16
+test(twoExp, 15, [3,2,7,6,8]);
+test(sumDigits, 32768, 26);
+test(prob16Func, 15, 26);
+test(prob16Func, 1000, 1366);
 
 var main = function() {
 
@@ -1078,6 +1136,13 @@ var main = function() {
 	    var prob15 = prob15Func(20);
 	    console.log(prob15);
       $('.15').text(prob15);
+    });
+
+    // problem 16 - Power digit sum
+    $('.btn-16').click(function(){
+	    var prob16 = prob16Func(1000);
+	    console.log(prob16);
+      $('.16').text(prob16);
     });
 
 };

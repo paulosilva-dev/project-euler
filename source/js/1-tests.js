@@ -101,7 +101,23 @@ var test = function(fun,arg,expec){
 
 
 // problem 16
-test(twoExp, 15, [3,2,7,6,8]);
-test(sumDigits, 32768, 26);
-test(prob16Func, 15, 26);
-test(prob16Func, 1000, 1366);
+// test(twoExp, 15, [3,2,7,6,8]);
+// test(sumDigits, 32768, 26);
+// test(prob16Func, 15, 26);
+// test(prob16Func, 1000, 1366);
+
+// problem 17
+// test(numToString, 1, 'one');
+// test(numToString, 15, 'fifteen');
+// test(numToString, 78, 'seventy-eight');
+// test(numToString, 342, 'three hundred and forty-two');
+// test(numToString, 1051, 'one thousand and fifty-one');
+// test(numToString, 3251, 'three thousand and two hundred and fifty-one');
+//
+// test(countletters, 'one', 3);
+// test(countletters, 'seventy-eight', 12);
+// test(countletters, numToString(342), 23);
+// test(countletters, numToString(115), 20);
+//
+// test(prob17Func, 5, 19);
+// test(prob17Func, 1000, 21124);

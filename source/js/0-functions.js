@@ -769,3 +769,139 @@ var prob16Func = function(exp){
 	var r = sumDigits(n);
 	return r;
 };
+
+// prob 17
+var numToString = function(n){
+	var s = '';
+	var r = 0;
+	// only doing numbers < one million
+	while (n>0) {
+		if(n>=1000){
+			r = Math.floor(n/1000);
+			n = n%1000;
+			s += (numToString(r) + ' thousand ');
+			if(n>0){
+				s+= 'and ';
+			}
+		} else if (n>=100){
+			r = Math.floor(n/100);
+			n = n%100;
+			s += (numToString(r) + ' hundred ');
+			if(n>0){
+				s+= 'and ';
+			}
+		} else if (n>=20) {
+			r = Math.floor(n/10);
+			n = n%10;
+			switch (r) {
+				case 9:
+					s+='ninety';
+					break;
+				case 8:
+					s+='eighty';
+					break;
+				case 7:
+					s+='seventy';
+					break;
+				case 6:
+					s+='sixty';
+					break;
+				case 5:
+					s+='fifty';
+					break;
+				case 4:
+					s+='forty';
+					break;
+				case 3:
+					s+='thirty';
+					break;
+				case 2:
+					s+='twenty';
+					break;
+			}
+			if (n>0){
+				s+='-';
+			}
+		} else {
+			switch (n) {
+				case 19:
+					s+='nineteen';
+					break;
+				case 18:
+					s+='eighteen';
+					break;
+				case 17:
+					s+='seventeen';
+					break;
+				case 16:
+					s+='sixteen';
+					break;
+				case 15:
+					s+='fifteen';
+					break;
+				case 14:
+					s+='fourteen';
+					break;
+				case 13:
+					s+='thirteen';
+					break;
+				case 12:
+					s+='twelve';
+					break;
+				case 11:
+					s+='eleven';
+					break;
+				case 10:
+					s+='ten';
+					break;
+				case 9:
+					s+='nine';
+					break;
+				case 8:
+					s+='eight';
+					break;
+				case 7:
+					s+='seven';
+					break;
+				case 6:
+					s+='six';
+					break;
+				case 5:
+					s+='five';
+					break;
+				case 4:
+					s+='four';
+					break;
+				case 3:
+					s+='three';
+					break;
+				case 2:
+					s+='two';
+					break;
+				case 1:
+					s+='one';
+					break;
+			}
+			n = 0;
+		}
+	}
+	return s;
+};
+
+var countletters = function(s){
+	nv=0;
+	for(var i=0; i<s.length;i++){
+		if(s[i]>='a'&& s[i]<='z'){
+			nv++;
+		}
+	}
+	return nv;
+};
+
+var prob17Func = function(max){
+	var count=0;
+	for(var i = 1; i<=max;i++){
+		count += countletters(numToString(i));
+	}
+	return count;
+};

@@ -265,6 +265,13 @@ var main = function() {
       $('.16').text(prob16);
     });
 
+    // problem 17 - Number letter counts
+    $('.btn-17').click(function(){
+	    var prob17 = prob17Func(1000);
+	    console.log(prob17);
+      $('.17').text(prob17);
+    });
+
 };
 // end of main function
 

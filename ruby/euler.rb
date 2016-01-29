@@ -202,5 +202,28 @@ end
 
 
 # p5 tests
-test(fn = method(:p5), 10, 2520, "Prob5 - base test")
-test(fn = method(:p5), 20, 232792560, "Prob5 - test question")
+#
+# test(fn = method(:p5), 10, 2520, "Prob5 - base test")
+# test(fn = method(:p5), 20, 232792560, "Prob5 - test question")
+
+#p6
+def p6(n)
+  ssq = 0
+  sum = 0
+  sqs = 0
+  n1 = n
+  n2 = n
+  while n1>0
+    ssq += n1*n1
+    n1-=1
+  end
+  while n2>0
+    sum += n2
+    n2-=1
+  end
+  sqs = sum * sum
+  return sqs - ssq
+end
+# p6 tests
+test(fn = method(:p6), 10, 2640, "Prob6 - base test")
+test(fn = method(:p6), 100, 25164150, "Prob6 - base test")

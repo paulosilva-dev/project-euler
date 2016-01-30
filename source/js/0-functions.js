@@ -905,3 +905,56 @@ var prob17Func = function(max){
 	}
 	return count;
 };
+
+// prob 18
+var prob18Func = function(p){
+	var row = 0;
+	// pyramid of pairs [value, sumPath]
+	var pyr =[];
+	var count = 0;
+
+	// ill parese the array and fiil in the pyramid
+	// with pairs [value, sumPath] calculating the
+	// highest path as I go along
+	for(var i = 0; i<p.length; ){
+		pyr.push([]);
+		count=0;
+		while (count <= row ) {
+			var pair = [p[i]];
+
+			if(row === 0){
+				pair.push(p[i]);
+			} else {
+				// sum from the left and right side
+				var sumL =0;
+				var sumR =0;
+				if (count > 0){
+					sumL = pyr[row-1][count-1][1]+p[i];
+				}
+				if (count < row){
+					sumR = pyr[row-1][count][1]+p[i];
+				}
+
+				// just saving the highest path value
+				if(sumL > sumR){
+					pair.push(sumL);
+				} else {
+					pair.push(sumR);
+				}
+			}
+
+			pyr[row].push(pair);
+			count++;
+			i++;
+		}
+		row++;
+	}
+	var maxSum = 0;
+	var lastIndex = pyr.length-1;
+	for(i =0;i<pyr[lastIndex].length;i++){
+		if(maxSum<pyr[lastIndex][i][1]){
+			maxSum =pyr[lastIndex][i][1];
+		}
+	}
+	return maxSum;
+};

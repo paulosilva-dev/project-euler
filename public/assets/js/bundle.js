@@ -907,13 +907,17 @@ var prob17Func = function(max){
 };
 
 // prob 18
+//
+// Note to self, should be fast enough to solve Problem 67
+// since it solves the porblem in linear time - O(N)
+//
 var prob18Func = function(p){
 	var row = 0;
 	// pyramid of pairs [value, sumPath]
 	var pyr =[];
 	var count = 0;
 
-	// ill parese the array and fiil in the pyramid
+	// ill parese the array and fill in the pyramid
 	// with pairs [value, sumPath] calculating the
 	// highest path as I go along
 	for(var i = 0; i<p.length; ){

@@ -225,5 +225,49 @@ def p6(n)
   return sqs - ssq
 end
 # p6 tests
-test(fn = method(:p6), 10, 2640, "Prob6 - base test")
-test(fn = method(:p6), 100, 25164150, "Prob6 - base test")
+# test(fn = method(:p6), 10, 2640, "Prob6 - base test")
+# test(fn = method(:p6), 100, 25164150, "Prob6 - base test")
+
+# p7
+def p7(n)
+  if n==1
+    return 2
+  end
+  if n==2
+    return 3
+  end
+  if n==3
+    return 5
+  end
+  if n>3
+    primeCand = 5
+    primeOrder = 3
+    begin
+      begin
+        primeCand +=2
+        notPrime = false
+        if primeCand%2 == 0 || primeCand%3 == 0
+          notPrime = true
+        else
+          divisor = (primeCand/2).floor
+          if divisor%2 ==0
+            divisor +=1
+          end
+          begin
+            if primeCand%divisor == 0
+              notPrime = true
+            end
+            divisor-=2
+          end while divisor >=5 && !notPrime
+        end
+      end while notPrime
+      primeOrder +=1
+    end while primeOrder < n
+    return primeCand
+  end
+  return 0
+end
+
+test(fn = method(:p7), 2, 3, "Prob7 - base test")
+test(fn = method(:p7), 6, 13, "Prob7 - base test")
+test(fn = method(:p7), 10001, 104743, "Prob7 - test")

@@ -147,3 +147,8 @@ var test = function(fun,arg,expec){
 //
 // test(prob18Func, pa, 23);
 // test(prob18Func, pb, 1074);
+
+// problem 19
+// test(prob19Func, [1900,1900], 2);
+// test(prob19Func, [1906,1909], 7);
+// test(prob19Func, [1901,2000], 171);

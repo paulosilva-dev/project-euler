@@ -962,6 +962,29 @@ var prob18Func = function(p){
 	}
 	return maxSum;
 };
+var prob19Func = function(years){
+	var startOfTime = 1900;
+	var startDay = 1; // 1- monday, 7 - sunday
+	var startYear = years[0];
+	var endYear = years[1];
+	var currentYear = startOfTime;
+	var dayPassed = 0;
+	var sundaysPassed = 0;
+	while (currentYear <= endYear) {
+		var months = [31,28,31,30,31,30,31,31,30,31,30,31];
+		if( (currentYear%100===0 && currentYear%400===0) || ( (currentYear%100!==0) && currentYear%4 === 0) ){
+			months[1] = 29;
+		}
+		for(var i =0; i<12; i++){
+			if(currentYear>=startYear && (dayPassed+1)%7 === 0){
+				sundaysPassed +=1;
+			}
+			dayPassed+=months[i];
+		}
+		currentYear +=1;
+	}
+	return sundaysPassed;
+};
 
 //simple test function :
 // used to test result and check algorithm performance
@@ -1108,10 +1131,15 @@ var test = function(fun,arg,expec){
 //             70, 11, 33, 28, 77, 73, 17, 78, 39, 68, 17, 57,
 //             91, 71, 52, 38, 17, 14, 91, 43, 58, 50, 27, 29, 48,
 //             63, 66, 04, 68, 89, 53, 67, 30, 73, 16, 69, 87, 40, 31,
-//             04, 62, 98, 27, 23, 09, 70, 98, 73, 93, 38, 53, 60, 04, 23];
+//             04, 62, 98, 27, 23,  9, 70, 98, 73, 93, 38, 53, 60, 04, 23];
 //
 // test(prob18Func, pa, 23);
 // test(prob18Func, pb, 1074);
+
+// problem 19
+// test(prob19Func, [1900,1900], 2);
+// test(prob19Func, [1906,1909], 7);
+// test(prob19Func, [1901,2000], 171);
 
 var main = function() {
 
@@ -1408,6 +1436,16 @@ var main = function() {
 	    console.log(prob18);
       $('.18').text(prob18);
     });
+
+
+
+    // problem 19 - 	Counting Sundays
+    $('.btn-19').click(function(){
+	    var prob19 = prob19Func([1901,2000]);
+	    console.log(prob19);
+      $('.19').text(prob19);
+    });
+
 };
 // end of main function
 

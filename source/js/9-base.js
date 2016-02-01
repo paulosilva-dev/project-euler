@@ -293,6 +293,16 @@ var main = function() {
 	    console.log(prob18);
       $('.18').text(prob18);
     });
+
+
+
+    // problem 19 - 	Counting Sundays
+    $('.btn-19').click(function(){
+	    var prob19 = prob19Func([1901,2000]);
+	    console.log(prob19);
+      $('.19').text(prob19);
+    });
+
 };
 // end of main function
 

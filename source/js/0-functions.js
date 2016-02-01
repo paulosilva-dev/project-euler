@@ -962,3 +962,26 @@ var prob18Func = function(p){
 	}
 	return maxSum;
 };
+var prob19Func = function(years){
+	var startOfTime = 1900;
+	var startDay = 1; // 1- monday, 7 - sunday
+	var startYear = years[0];
+	var endYear = years[1];
+	var currentYear = startOfTime;
+	var dayPassed = 0;
+	var sundaysPassed = 0;
+	while (currentYear <= endYear) {
+		var months = [31,28,31,30,31,30,31,31,30,31,30,31];
+		if( (currentYear%100===0 && currentYear%400===0) || ( (currentYear%100!==0) && currentYear%4 === 0) ){
+			months[1] = 29;
+		}
+		for(var i =0; i<12; i++){
+			if(currentYear>=startYear && (dayPassed+1)%7 === 0){
+				sundaysPassed +=1;
+			}
+			dayPassed+=months[i];
+		}
+		currentYear +=1;
+	}
+	return sundaysPassed;
+};

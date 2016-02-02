@@ -303,6 +303,12 @@ var main = function() {
       $('.19').text(prob19);
     });
 
+    // problem 20 - 		Factorial digit sum
+    $('.btn-20').click(function(){
+	    var prob20 = prob20Func(100);
+	    console.log(prob20);
+      $('.20').text(prob20);
+    });
 };
 // end of main function
 

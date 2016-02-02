@@ -986,6 +986,45 @@ var prob19Func = function(years){
 	return sundaysPassed;
 };
 
+var prob20Func = function(num){
+
+	var ar = [1];
+	var n = 1;
+	for (var i =1;i<=num;i+=1){
+		for (var l = ar.length-1;l>=0;l--){
+			n =ar[l];
+			n*=i;
+			ar[l] = n;
+		}
+		// normalizing to a digit per index
+		for (l = ar.length-1;l>=0;l--){
+			n =ar[l];
+			if(n>=10){
+				ar[l] = n%10;
+				if(l>0){
+					ar[l-1] += Math.floor(n/10);
+				} else {
+					ar.unshift(Math.floor(n/10));
+				}
+			}
+		}
+		while (ar[0]>=10) {
+			n =ar[0];
+			ar[0] = n%10;
+			if(l>0){
+				ar[0] += Math.floor(n/10);
+			} else {
+				ar.unshift(Math.floor(n/10));
+			}
+		}
+	}
+	var sumDigit = 0;
+	for( i=0; i<ar.length; i++){
+		sumDigit+=ar[i];
+	}
+	return sumDigit;
+};
+
 //simple test function :
 // used to test result and check algorithm performance
 var test = function(fun,arg,expec){
@@ -1140,6 +1179,10 @@ var test = function(fun,arg,expec){
 // test(prob19Func, [1900,1900], 2);
 // test(prob19Func, [1906,1909], 7);
 // test(prob19Func, [1901,2000], 171);
+
+// problem 20
+// test(prob20Func, 10, 27);
+// test(prob20Func, 100, 648);
 
 var main = function() {
 
@@ -1446,6 +1489,12 @@ var main = function() {
       $('.19').text(prob19);
     });
 
+    // problem 20 - 		Factorial digit sum
+    $('.btn-20').click(function(){
+	    var prob20 = prob20Func(100);
+	    console.log(prob20);
+      $('.20').text(prob20);
+    });
 };
 // end of main function
 

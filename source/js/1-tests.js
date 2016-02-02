@@ -152,3 +152,7 @@ var test = function(fun,arg,expec){
 // test(prob19Func, [1900,1900], 2);
 // test(prob19Func, [1906,1909], 7);
 // test(prob19Func, [1901,2000], 171);
+
+// problem 20
+// test(prob20Func, 10, 27);
+// test(prob20Func, 100, 648);

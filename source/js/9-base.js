@@ -309,6 +309,13 @@ var main = function() {
 	    console.log(prob20);
       $('.20').text(prob20);
     });
+
+    // problem 21 - 		Amicable numbers
+    $('.btn-21').click(function(){
+	    var prob21 = prob21Func(10000);
+	    console.log(prob21);
+      $('.21').text(prob21);
+    });
 };
 // end of main function
 

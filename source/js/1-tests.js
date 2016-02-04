@@ -156,3 +156,8 @@ var test = function(fun,arg,expec){
 // problem 20
 // test(prob20Func, 10, 27);
 // test(prob20Func, 100, 648);
+
+// problem 21
+// test(properDivSum, 220, 284);
+// test(properDivSum, 284, 220);
+// test(prob21Func, 10000, 31626);

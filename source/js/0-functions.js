@@ -962,6 +962,9 @@ var prob18Func = function(p){
 	}
 	return maxSum;
 };
+
+
+// prob 19
 var prob19Func = function(years){
 	var startOfTime = 1900;
 	var startDay = 1; // 1- monday, 7 - sunday
@@ -986,6 +989,7 @@ var prob19Func = function(years){
 	return sundaysPassed;
 };
 
+// prob 20
 var prob20Func = function(num){
 
 	var ar = [1];
@@ -1023,4 +1027,52 @@ var prob20Func = function(num){
 		sumDigit+=ar[i];
 	}
 	return sumDigit;
+};
+
+
+// prob 21
+var properDivSum = function(n){
+
+	// sanity checks
+	if(n<0){
+		return -1;
+	}
+	if(n===0){
+		return 0;
+	}
+
+	var divisors = [];
+	var currentDivisor = 1;
+	var maxDivisor = Math.floor(n/2);
+	while (currentDivisor<=maxDivisor) {
+		if(n%currentDivisor === 0){
+			divisors.push(currentDivisor);
+		}
+		currentDivisor++;
+	}
+
+	var r = 0;
+	for(var i=0;i<divisors.length;i++){
+		r+=divisors[i];
+	}
+
+	return r;
+};
+
+var prob21Func = function(max){
+	//ill store the result of the divisors sum in an 0-max array
+	var divSum = [];
+	for(var i =0; i<max; i++){
+		divSum.push(properDivSum(i));
+	}
+	var r = 0;
+	for(i =0; i<divSum.length; i++){
+		var currentSum = divSum[i];
+		if(currentSum<max && currentSum !== i){
+			if(divSum[currentSum] === i){
+				r+=i;
+			}
+		}
+	}
+	return r;
 };

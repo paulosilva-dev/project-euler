@@ -1,3 +1,22 @@
+
+// used to load js files
+function loadScript(url, callback)
+{
+    // Adding the script tag to the head as suggested before
+    var head = document.getElementsByTagName('head')[0];
+    var script = document.createElement('script');
+    script.type = 'text/javascript';
+    script.src = url;
+
+    // Then bind the event to the callback function.
+    // There are several events for cross browser compatibility.
+    script.onreadystatechange = callback;
+    script.onload = callback;
+
+    // Fire the loading
+    head.appendChild(script);
+}
+
 //returns a version of the given list without duplicates
 var uniqueList = function(list){
 	var h = {};
@@ -1077,6 +1096,22 @@ var prob21Func = function(max){
 	return r;
 };
 
+// prob 22
+var prob22Func = function(names){
+	names = names.sort();
+	aOffset = "a".charCodeAt(0);
+	var totalSum = 0;
+	for(var i = 0;i<names.length;i++){
+		var nameSum = 0;
+		names[i] = names[i].toLowerCase();
+		for(var c=0; c<names[i].length; c++){
+			nameSum += (names[i].charCodeAt(c) - aOffset)+1;
+		}
+		totalSum += nameSum * (i+1);
+	}
+	return totalSum;
+};
+
 //simple test function :
 // used to test result and check algorithm performance
 var test = function(fun,arg,expec){
@@ -1240,6 +1275,12 @@ var test = function(fun,arg,expec){
 // test(properDivSum, 220, 284);
 // test(properDivSum, 284, 220);
 // test(prob21Func, 10000, 31626);
+
+// problem 22
+test(prob22Func, ["aaa"], 3);
+test(prob22Func, ["abc"], 6);
+test(prob22Func, ["b","a"], 5);
+test(prob22Func, ["COLIN"], 53);
 
 var main = function() {
 

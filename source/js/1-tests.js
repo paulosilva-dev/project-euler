@@ -161,3 +161,9 @@ var test = function(fun,arg,expec){
 // test(properDivSum, 220, 284);
 // test(properDivSum, 284, 220);
 // test(prob21Func, 10000, 31626);
+
+// problem 22
+test(prob22Func, ["aaa"], 3);
+test(prob22Func, ["abc"], 6);
+test(prob22Func, ["b","a"], 5);
+test(prob22Func, ["COLIN"], 53);

@@ -316,6 +316,18 @@ var main = function() {
 	    console.log(prob21);
       $('.21').text(prob21);
     });
+
+    // problem 22 - 			Names scores
+
+    $('.btn-22').click(function(){
+	    var prob22;
+			loadScript("assets/p22-names.js", function(){
+				prob22 = prob22Func(p22names);
+		    console.log(prob22);
+	      $('.22').text(prob22);
+			});
+    });
+
 };
 // end of main function
 

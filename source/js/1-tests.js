@@ -163,7 +163,8 @@ var test = function(fun,arg,expec){
 // test(prob21Func, 10000, 31626);
 
 // problem 22
-test(prob22Func, ["aaa"], 3);
-test(prob22Func, ["abc"], 6);
-test(prob22Func, ["b","a"], 5);
-test(prob22Func, ["COLIN"], 53);
+// test(prob22Func, ["aaa"], 3);
+// test(prob22Func, ["abc"], 6);
+// test(prob22Func, ["b","a"], 5);
+// test(prob22Func, ["COLIN"], 53);
+// loadScript("assets/p22-names.js", function(){  test(prob22Func, p22names, 871198282); });

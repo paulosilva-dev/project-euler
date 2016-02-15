@@ -310,14 +310,14 @@ var main = function() {
       $('.20').text(prob20);
     });
 
-    // problem 21 - 		Amicable numbers
+    // problem 21 - Amicable numbers
     $('.btn-21').click(function(){
 	    var prob21 = prob21Func(10000);
 	    console.log(prob21);
       $('.21').text(prob21);
     });
 
-    // problem 22 - 			Names scores
+    // problem 22 - Names scores
 
     $('.btn-22').click(function(){
 	    var prob22;
@@ -326,6 +326,15 @@ var main = function() {
 		    console.log(prob22);
 	      $('.22').text(prob22);
 			});
+    });
+
+    // problem 23 - Non-abundant sums
+
+    $('.btn-23').click(function(){
+	    var prob23;
+			prob23 = prob23Func();
+	    console.log(prob23);
+      $('.23').text(prob23);
     });
 
 };

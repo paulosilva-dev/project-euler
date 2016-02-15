@@ -1111,3 +1111,53 @@ var prob22Func = function(names){
 	}
 	return totalSum;
 };
+
+// prob 23
+
+// verifies if a given num is abundant
+var isAbundant = function(num){
+  if(num<12) {
+    return false;
+  }
+  var divisors = [];
+  for(var i=1;i<=num/2;i++){
+    if(num%i===0){
+      divisors.push(i);
+    }
+  }
+  var r = sumArray(divisors);
+  return r>num;
+};
+
+var prob23Func = function(){
+  var max=28123;
+  var sum = 0;
+  var abundants=[];
+
+  // finding all abundant numbers
+  // and caching them in an array
+  // to prevent expensive calculations
+  for(var i=0;i<=max;i++){
+    abundants.push(isAbundant(i));
+  }
+
+  for(i =1;i<=max;i++){
+    if(i<24){
+        sum +=i;
+    } else{
+      var isSunOfA = false;
+      for(var x=i;x>=i/2&&!isSunOfA;x--){
+          if(abundants[x]){
+            if(abundants[i-x]){
+              isSunOfA = true;
+            }
+          }
+      }
+      if(!isSunOfA){
+        sum+=i;
+      }
+    }
+  }
+
+  return sum;
+};

@@ -1112,6 +1112,56 @@ var prob22Func = function(names){
 	return totalSum;
 };
 
+// prob 23
+
+// verifies if a given num is abundant
+var isAbundant = function(num){
+  if(num<12) {
+    return false;
+  }
+  var divisors = [];
+  for(var i=1;i<=num/2;i++){
+    if(num%i===0){
+      divisors.push(i);
+    }
+  }
+  var r = sumArray(divisors);
+  return r>num;
+};
+
+var prob23Func = function(){
+  var max=28123;
+  var sum = 0;
+  var abundants=[];
+
+  // finding all abundant numbers
+  // and caching them in an array
+  // to prevent expensive calculations
+  for(var i=0;i<=max;i++){
+    abundants.push(isAbundant(i));
+  }
+
+  for(i =1;i<=max;i++){
+    if(i<24){
+        sum +=i;
+    } else{
+      var isSunOfA = false;
+      for(var x=i;x>=i/2&&!isSunOfA;x--){
+          if(abundants[x]){
+            if(abundants[i-x]){
+              isSunOfA = true;
+            }
+          }
+      }
+      if(!isSunOfA){
+        sum+=i;
+      }
+    }
+  }
+
+  return sum;
+};
+
 //simple test function :
 // used to test result and check algorithm performance
 var test = function(fun,arg,expec){
@@ -1282,6 +1332,11 @@ var test = function(fun,arg,expec){
 // test(prob22Func, ["b","a"], 5);
 // test(prob22Func, ["COLIN"], 53);
 // loadScript("assets/p22-names.js", function(){  test(prob22Func, p22names, 871198282); });
+
+// problem 23
+// test(isAbundant, 24, true);
+// test(isAbundant, 12, true);
+// test(isAbundant, 9, false);
 
 var main = function() {
 
@@ -1595,14 +1650,14 @@ var main = function() {
       $('.20').text(prob20);
     });
 
-    // problem 21 - 		Amicable numbers
+    // problem 21 - Amicable numbers
     $('.btn-21').click(function(){
 	    var prob21 = prob21Func(10000);
 	    console.log(prob21);
       $('.21').text(prob21);
     });
 
-    // problem 22 - 			Names scores
+    // problem 22 - Names scores
 
     $('.btn-22').click(function(){
 	    var prob22;
@@ -1611,6 +1666,15 @@ var main = function() {
 		    console.log(prob22);
 	      $('.22').text(prob22);
 			});
+    });
+
+    // problem 23 - Non-abundant sums
+
+    $('.btn-23').click(function(){
+	    var prob23;
+			prob23 = prob23Func();
+	    console.log(prob23);
+      $('.23').text(prob23);
     });
 
 };

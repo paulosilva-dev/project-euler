@@ -168,3 +168,8 @@ var test = function(fun,arg,expec){
 // test(prob22Func, ["b","a"], 5);
 // test(prob22Func, ["COLIN"], 53);
 // loadScript("assets/p22-names.js", function(){  test(prob22Func, p22names, 871198282); });
+
+// problem 23
+// test(isAbundant, 24, true);
+// test(isAbundant, 12, true);
+// test(isAbundant, 9, false);

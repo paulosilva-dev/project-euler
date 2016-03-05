@@ -337,6 +337,15 @@ var main = function() {
       $('.23').text(prob23);
     });
 
+    // problem 24 - Non-abundant sums
+
+    $('.btn-24').click(function(){
+	    var prob24;
+			prob24 = prob24Func([[0,1,2,3,4,5,6,7,8,9],1000000]);
+	    console.log(prob24);
+      $('.24').text(prob24);
+    });
+
 };
 // end of main function
 

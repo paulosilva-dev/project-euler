@@ -1177,13 +1177,43 @@ var permtsNumber = function(x){
 var prob24Func = function(ar){
   var numberArr = new ArrayNum(ar[0]);
   var permOrder = ar[1];
-  var permCount = 0;
   var r = 0;
   var digit = numberArr.length-1;
   var found = false;
-  if(permOrder === 0 ){
+  if(permOrder === 1 ){
     r = numberArr.toNum();
+  } else {
+    var maxPermutations = permtsNumber(numberArr.array.length);
+    var swapped = false;
+    if(permOrder<=maxPermutations){
+    // console.log("Perm : 1 > "+numberArr.toNum());
+      for(var permCount = 2; permCount <= permOrder; permCount++){
+        swapped = false;
+        for(var i = numberArr.array.length-1; i>0 && !swapped; i--){
+          if(numberArr.array[i]>numberArr.array[i-1]){
+            // needs to swap to next lowest number
+            var candidate = i;
+            for(var k = candidate;k<numberArr.array.length;k++){
+              if(numberArr.array[candidate] > numberArr.array[k] && numberArr.array[k] > numberArr.array[i-1]){
+                candidate = k;
+              }
+            }
+            var tmp = numberArr.array[i-1];
+            numberArr.array[i-1] = numberArr.array[candidate];
+            numberArr.array[candidate] = tmp;
+            swapped = true;
+            // now sort the sub array i - last to provide the next lowerst number
+            var tmpArray = numberArr.array.slice(i, numberArr.array.length);
+            tmpArray.sort();
+            for(var  j = i;j<numberArr.array.length;j++){
+              numberArr.array[j]=tmpArray[j-i];
+            }
+          }
+        }
+        // console.log("Perm : "+ permCount+" > "+numberArr.toNum());
+      }
+      r = numberArr.toNum();
+    }
   }
-
   return r;
 };

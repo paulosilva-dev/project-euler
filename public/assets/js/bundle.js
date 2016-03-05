@@ -1,24 +1,60 @@
 // converts a number to an array (1 digit per slot)
 function ArrayNum(num) {
-	this.arrayNum = [];
+	this.array = [];
   if(num.constructor == Array){
-    this.arrayNum = num.slice();
+    this.array = num.slice();
   }
   if(num.constructor == Number){
   	do{
-  		this.arrayNum.push(num%10);
+  		this.array.push(num%10);
   		num=Math.floor(num/10);
   	}while(num > 0);
-    this.arrayNum = this.arrayNum.reverse();
+    this.array = this.array.reverse();
   }
 
   this.toNum = function(){
     var num = 0;
-    for(var i= 0; i<this.arrayNum.length; i++){
-      num += Math.pow(10,this.arrayNum.length-i-1) *this.arrayNum[i];
+    for(var i= 0; i<this.array.length; i++){
+      num += Math.pow(10,this.array.length-i-1) *this.array[i];
     }
     return num;
   };
+
+	this.contains = function(nums){
+		// not checking if reapeated numbers exist
+		if(nums.constructor == Number){
+			for(var i = 0; i<this.array.length;i++){
+				if(this.array[i] === nums){
+					return true;
+				}
+			}
+			return false;
+		} else {
+			var foundNum = false;
+			for(var i = 0; i<nums.length;i++){
+				foundNum = false;
+				for(var j = 0; j<this.array.length && !foundNum;j++){
+					if(nums[i] === this.array[j]){
+						foundNum = true;
+					}
+				}
+				if(!foundNum){
+					return false;
+				}
+			}
+			return true;
+		}
+	};
+	this.allDifferent = function(){
+		for(var i =0; i<this.array.length;i++){
+			for(var k =i+1; k<this.array.length;k++){
+				if(this.array[i]===this.array[k]){
+					return false;
+				}
+			}
+		}
+		return true;
+	};
 }
 
 
@@ -1200,14 +1236,44 @@ var permtsNumber = function(x){
 var prob24Func = function(ar){
   var numberArr = new ArrayNum(ar[0]);
   var permOrder = ar[1];
-  var permCount = 0;
   var r = 0;
   var digit = numberArr.length-1;
   var found = false;
-  if(permOrder === 0 ){
+  if(permOrder === 1 ){
     r = numberArr.toNum();
+  } else {
+    var maxPermutations = permtsNumber(numberArr.array.length);
+    var swapped = false;
+    if(permOrder<=maxPermutations){
+    // console.log("Perm : 1 > "+numberArr.toNum());
+      for(var permCount = 2; permCount <= permOrder; permCount++){
+        swapped = false;
+        for(var i = numberArr.array.length-1; i>0 && !swapped; i--){
+          if(numberArr.array[i]>numberArr.array[i-1]){
+            // needs to swap to next lowest number
+            var candidate = i;
+            for(var k = candidate;k<numberArr.array.length;k++){
+              if(numberArr.array[candidate] > numberArr.array[k] && numberArr.array[k] > numberArr.array[i-1]){
+                candidate = k;
+              }
+            }
+            var tmp = numberArr.array[i-1];
+            numberArr.array[i-1] = numberArr.array[candidate];
+            numberArr.array[candidate] = tmp;
+            swapped = true;
+            // now sort the sub array i - last to provide the next lowerst number
+            var tmpArray = numberArr.array.slice(i, numberArr.array.length);
+            tmpArray.sort();
+            for(var  j = i;j<numberArr.array.length;j++){
+              numberArr.array[j]=tmpArray[j-i];
+            }
+          }
+        }
+        // console.log("Perm : "+ permCount+" > "+numberArr.toNum());
+      }
+      r = numberArr.toNum();
+    }
   }
-
   return r;
 };
 
@@ -1388,11 +1454,13 @@ var test = function(fun,arg,expec){
 // test(isAbundant, 9, false);
 
 // problem 24
-test(prob24Func, [[0,1,2],0], 12);
-test(prob24Func, [[0,1,2],3], 102);
-test(prob24Func, [[0,1,2],5], 201);
-test(prob24Func, [[0,1,2,3],5], 312);
-test(prob24Func, [[0,1,2,3],11], 1302);
+// test(prob24Func, [[0,1,2],1], 12);
+// test(prob24Func, [[0,1,2],2], 21);
+// test(prob24Func, [[0,1,2],3], 102);
+// test(prob24Func, [[0,1,2],5], 201);
+// test(prob24Func, [[0,1,2,3],5], 312);
+// test(prob24Func, [[0,1,2,3],11], 1302);
+// test(prob24Func, [[0,1,2,3,4,5,6,7,8,9],1000000], 2783915460);
 
 var main = function() {
 
@@ -1731,6 +1799,15 @@ var main = function() {
 			prob23 = prob23Func();
 	    console.log(prob23);
       $('.23').text(prob23);
+    });
+
+    // problem 24 - Non-abundant sums
+
+    $('.btn-24').click(function(){
+	    var prob24;
+			prob24 = prob24Func([[0,1,2,3,4,5,6,7,8,9],1000000]);
+	    console.log(prob24);
+      $('.24').text(prob24);
     });
 
 };

@@ -1161,3 +1161,29 @@ var prob23Func = function(){
 
   return sum;
 };
+
+// prob 24
+
+var permtsNumber = function(x){
+  permCount=0;
+  r=1;
+  for(var i =0; i<x;i++){
+    permCount++;
+    r*=permCount;
+  }
+  return r;
+};
+
+var prob24Func = function(ar){
+  var numberArr = new ArrayNum(ar[0]);
+  var permOrder = ar[1];
+  var permCount = 0;
+  var r = 0;
+  var digit = numberArr.length-1;
+  var found = false;
+  if(permOrder === 0 ){
+    r = numberArr.toNum();
+  }
+
+  return r;
+};

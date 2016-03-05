@@ -1,3 +1,26 @@
+// converts a number to an array (1 digit per slot)
+function ArrayNum(num) {
+	this.arrayNum = [];
+  if(num.constructor == Array){
+    this.arrayNum = num.slice();
+  }
+  if(num.constructor == Number){
+  	do{
+  		this.arrayNum.push(num%10);
+  		num=Math.floor(num/10);
+  	}while(num > 0);
+    this.arrayNum = this.arrayNum.reverse();
+  }
+
+  this.toNum = function(){
+    var num = 0;
+    for(var i= 0; i<this.arrayNum.length; i++){
+      num += Math.pow(10,this.arrayNum.length-i-1) *this.arrayNum[i];
+    }
+    return num;
+  };
+}
+
 
 // used to load js files
 function loadScript(url, callback)
@@ -1162,6 +1185,32 @@ var prob23Func = function(){
   return sum;
 };
 
+// prob 24
+
+var permtsNumber = function(x){
+  permCount=0;
+  r=1;
+  for(var i =0; i<x;i++){
+    permCount++;
+    r*=permCount;
+  }
+  return r;
+};
+
+var prob24Func = function(ar){
+  var numberArr = new ArrayNum(ar[0]);
+  var permOrder = ar[1];
+  var permCount = 0;
+  var r = 0;
+  var digit = numberArr.length-1;
+  var found = false;
+  if(permOrder === 0 ){
+    r = numberArr.toNum();
+  }
+
+  return r;
+};
+
 //simple test function :
 // used to test result and check algorithm performance
 var test = function(fun,arg,expec){
@@ -1337,6 +1386,13 @@ var test = function(fun,arg,expec){
 // test(isAbundant, 24, true);
 // test(isAbundant, 12, true);
 // test(isAbundant, 9, false);
+
+// problem 24
+test(prob24Func, [[0,1,2],0], 12);
+test(prob24Func, [[0,1,2],3], 102);
+test(prob24Func, [[0,1,2],5], 201);
+test(prob24Func, [[0,1,2,3],5], 312);
+test(prob24Func, [[0,1,2,3],11], 1302);
 
 var main = function() {
 

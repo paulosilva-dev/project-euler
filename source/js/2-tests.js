@@ -173,3 +173,10 @@ var test = function(fun,arg,expec){
 // test(isAbundant, 24, true);
 // test(isAbundant, 12, true);
 // test(isAbundant, 9, false);
+
+// problem 24
+test(prob24Func, [[0,1,2],0], 12);
+test(prob24Func, [[0,1,2],3], 102);
+test(prob24Func, [[0,1,2],5], 201);
+test(prob24Func, [[0,1,2,3],5], 312);
+test(prob24Func, [[0,1,2,3],11], 1302);
